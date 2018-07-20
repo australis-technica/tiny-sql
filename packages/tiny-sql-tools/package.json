@@ -1,0 +1,48 @@
+{
+  "name": "@australis/tiny-sql-tools",
+  "version": "1.0.0-0",
+  "description": "meta package",
+  "private": true,
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "jest --ci --env=node",
+    "build": "tsc -p .",
+    "clean": "rimraf lib",
+    "rebuild": "npm run clean && npm run build"
+  },
+  "keywords": [],
+  "author": "daniel@australis-technica.com",
+  "license": "MIT",
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.test.json"
+      }
+    },
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/test/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "dependencies": {
+   
+  },
+  "devDependencies": {
+    "@types/debug": "^0.0.30",
+    "@types/node": "^10.5.2",
+    "jest": "22.4.3",
+    "rimraf": "^2.6.2",
+    "ts-jest": "22.4.4",
+    "ts-node": "^5.0.0",
+    "typescript": "2.9.2"
+  }
+}

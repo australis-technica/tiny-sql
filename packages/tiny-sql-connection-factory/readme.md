@@ -1,0 +1,1 @@
+create new ms-sql/tedious, connection from connection-config from env key

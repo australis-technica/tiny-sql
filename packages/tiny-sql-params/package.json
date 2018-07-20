@@ -1,0 +1,52 @@
+{
+  "name": "@australis/tiny-sql-params",
+  "private": true,
+  "version": "1.0.0",
+  "description": "tiny sql mapper for tediousjs",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "jest --ci --env=node",
+    "build": "tsc -p .",
+    "clean": "rimraf ./lib",
+    "rebuild": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "typescript",
+    "sql",
+    "mapper"
+  ],
+  "author": "daniel@australis-technica.com",
+  "license": "MIT",
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.test.json"
+      }
+    },
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/test/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "dependencies": {
+    "debug": "^3.1.0",
+    "tedious": "^2.6.3"
+  },
+  "devDependencies": {
+    "@types/debug": "^0.0.30",
+    "@types/jest": "23.1.5",
+    "@types/tedious": "^1.8.33",
+    "jest": "22.4.3",
+    "ts-jest": "22.4.4",
+    "typescript": "2.9.2"
+  }
+}

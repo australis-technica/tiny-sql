@@ -1,0 +1,39 @@
+{
+  "name": "tiny-sql-tools",
+  "version": "1.0.0",
+  "description": "tiny ms-sql tools",
+  "private": true,
+  "scripts": {
+    "build": "lerna --no-sort run build",
+    "clean-modules": "rimraf **/node_modules/* && rimraf **/yarn.lock && yarn",
+    "test": "echo dosn\\'t work && lerna --no-sort run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/australis-technica/tiny-sql.git"
+  },
+  "keywords": [],
+  "author": "daniel@australis-technica",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/australis-technica/tiny-sql/issues"
+  },
+  "homepage": "https://github.com/australis-technica/tiny-sql#readme",
+  "workspaces": [
+    "packages/tiny-sql-connect",
+    "packages/tiny-sql-params",
+    "packages/tiny-sql-exec-sql",
+    "packages/tiny-sql-connection-config",
+    "packages/tiny-sql-connection-string-parse",
+    "packages/tiny-sql-connection-factory",
+    "packages/tiny-sql-scripts",
+    "packages/tiny-sql-batch-script",
+    "packages/tiny-sql-tools"
+  ],
+  "engines": {
+    "yarn": "^1.7.0"
+  },
+  "devDependencies": {
+    "lerna": "^2.11.0"
+  }
+}

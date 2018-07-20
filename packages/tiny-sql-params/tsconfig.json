@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "sourceMap": true,
+        "outDir": "./lib",                
+        "declaration": true
+    },
+    "exclude": [
+        "lib",
+        "node_modules",
+        "**/*.test.*",
+        "**/*-test.*",
+        "**/*_test.*",
+        "**/__test__/*"
+    ],
+    "include": [
+        "./src/**/*.ts"
+    ]
+}

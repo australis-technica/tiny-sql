@@ -1,0 +1,16 @@
+{
+  "lerna": "2.11.0",
+  "packages": [
+    "packages/tiny-sql-connect",
+    "packages/tiny-sql-params",
+    "packages/tiny-sql-exec-sql",
+    "packages/tiny-sql-connection-config",
+    "packages/tiny-sql-connection-string-parse",
+    "packages/tiny-sql-connection-factory",
+    "packages/tiny-sql-scripts",
+    "packages/tiny-sql-batch-script",
+    "packages/tiny-sql-tools"
+  ],
+  "version": "0.0.0",
+  "npmClient": "yarn"
+}

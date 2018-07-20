@@ -1,0 +1,1 @@
+parses a restricted subset of ms-sql connection strings format
