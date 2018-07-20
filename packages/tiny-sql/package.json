@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "@australis/tiny-sql-batch-script": "1.0.0-2",
+    "@australis/tiny-sql-connect": "1.0.0-2",
     "@australis/tiny-sql-connection-config": "1.0.0-2",
     "@australis/tiny-sql-connection-factory": "^1.0.0-2",
     "@australis/tiny-sql-connection-string-parse": "1.0.0-2",
