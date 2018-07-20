@@ -9,3 +9,7 @@ test/
 .npmignore
 tslint*
 yarn.lock
+*.dev.env
+*.prod.env
+*.test.env
+*.log

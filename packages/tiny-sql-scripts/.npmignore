@@ -10,3 +10,7 @@ test/
 tslint*
 yarn.lock
 *.sql
+*.dev.env
+*.prod.env
+*.test.env
+*.log

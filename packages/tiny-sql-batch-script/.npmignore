@@ -12,3 +12,4 @@ yarn.lock
 *.dev.env
 *.prod.env
 *.test.env
+*.log
