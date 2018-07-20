@@ -9,7 +9,7 @@
     "packages/tiny-sql-connection-factory",
     "packages/tiny-sql-scripts",
     "packages/tiny-sql-batch-script",
-    "packages/tiny-sql-tools"
+    "packages/tiny-sql"
   ],
   "version": "0.0.0",
   "npmClient": "yarn"

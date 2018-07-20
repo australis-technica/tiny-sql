@@ -28,7 +28,7 @@
     "packages/tiny-sql-connection-factory",
     "packages/tiny-sql-scripts",
     "packages/tiny-sql-batch-script",
-    "packages/tiny-sql-tools"
+    "packages/tiny-sql"
   ],
   "engines": {
     "yarn": "^1.7.0"

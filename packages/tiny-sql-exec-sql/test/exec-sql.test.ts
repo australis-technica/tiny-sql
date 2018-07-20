@@ -14,6 +14,7 @@ it("execs with connection", async () => {
   try {
     connection = new Connection(config);
     const sqlTxt = "select 'x' as name";
+    connection.close();
     connection = await connect(config);
     const execSql = ExecSql(connection);
     const result = await execSql<{ name: string }>(sqlTxt);

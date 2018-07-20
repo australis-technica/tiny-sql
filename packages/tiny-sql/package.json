@@ -1,5 +1,5 @@
 {
-  "name": "@australis/tiny-sql-tools",
+  "name": "@australis/tiny-sql",
   "version": "1.0.0-0",
   "description": "meta package",
   "private": true,
