@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "build": "lerna --no-sort run build",
-    "clean-modules": "rimraf **/node_modules/* && rm **/yarn.lock && yarn",
+    "clean-modules": "rimraf **/node_modules/* && rm yarn.lock && yarn",
     "test": "echo doesn\\'t work && lerna --no-sort run test"
   },
   "repository": {
