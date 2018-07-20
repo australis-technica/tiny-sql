@@ -9,7 +9,10 @@
     "test": "jest --ci --env=node",
     "build": "tsc -p .",
     "clean": "rimraf lib",
-    "rebuild": "npm run clean && npm run build"
+    "set-private": "../../scripts/set-private.js --value=true",
+    "set-public": "../../scripts/set-private.js --value=false",
+    "rebuild": "npm run clean && npm run build",
+    "publish": "npm run set-public && echo npm publish --access public && npm run set-private"
   },
   "keywords": [],
   "author": "daniel@australis-technica.com",

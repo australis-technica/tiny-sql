@@ -1,7 +1,7 @@
 {
   "name": "@australis/tiny-sql-exec-sql",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.0-0",
   "description": "tiny sql mapper for tediousjs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,7 +9,8 @@
     "test": "jest --ci --env=node",
     "build": "tsc -p .",
     "clean": "rimraf ./lib",
-    "rebuild": "npm run clean && npm run build"
+    "rebuild": "npm run clean && npm run build",
+    "publish": "npm publish --access public"
   },
   "keywords": [
     "typescript",

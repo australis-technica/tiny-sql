@@ -1,12 +1,12 @@
 {
   "name": "tiny-sql-tools",
-  "version": "1.0.0",
+  "version": "1.0.0-0",
   "description": "tiny ms-sql tools",
   "private": true,
   "scripts": {
     "build": "lerna --no-sort run build",
-    "clean-modules": "rimraf **/node_modules/* && rimraf **/yarn.lock && yarn",
-    "test": "echo dosn\\'t work && lerna --no-sort run test"
+    "clean-modules": "rimraf **/node_modules/* && rm **/yarn.lock && yarn",
+    "test": "echo doesn\\'t work && lerna --no-sort run test"    
   },
   "repository": {
     "type": "git",
