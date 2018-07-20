@@ -1,12 +1,12 @@
 {
   "name": "tiny-sql-tools",
-  "version": "1.0.0-0",
+  "version": "1.0.0-1",
   "description": "tiny ms-sql tools",
   "private": true,
   "scripts": {
     "build": "lerna --no-sort run build",
     "clean-modules": "rimraf **/node_modules/* && rm **/yarn.lock && yarn",
-    "test": "echo doesn\\'t work && lerna --no-sort run test"    
+    "test": "echo doesn\\'t work && lerna --no-sort run test"
   },
   "repository": {
     "type": "git",
@@ -27,8 +27,7 @@
     "packages/tiny-sql-connection-string-parse",
     "packages/tiny-sql-connection-factory",
     "packages/tiny-sql-scripts",
-    "packages/tiny-sql-batch-script",
-    "packages/tiny-sql"
+    "packages/tiny-sql-batch-script"
   ],
   "engines": {
     "yarn": "^1.7.0"

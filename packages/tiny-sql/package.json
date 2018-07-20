@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql",
-  "version": "1.0.0-0",
+"version": "1.0.0-1",
   "description": "meta package",
   "private": true,
   "main": "lib/index.js",
@@ -12,7 +12,7 @@
     "rebuild": "npm run clean && npm run build",
     "set-private": "node ../../scripts/set-private.js --value=true",
     "set-public": "node ../../scripts/set-private.js --value=false",
-    "publishit":  "npm run set-public && npm publish --access public && npm run set-private"
+    "publishit": "npm run set-public && npm publish --access public && npm run set-private"
   },
   "keywords": [],
   "author": "daniel@australis-technica.com",
@@ -37,7 +37,13 @@
     ]
   },
   "dependencies": {
-   
+    "@australis/tiny-sql-batch-script": "latest",
+    "@australis/tiny-sql-connection-config": "latest",
+    "@australis/tiny-sql-connection-factory": "^latest",
+    "@australis/tiny-sql-connection-string-parse": "latest",
+    "@australis/tiny-sql-exec-sql": "latest",
+    "@australis/tiny-sql-params": "latest",
+    "@australis/tiny-sql-scripts": "latest"
   },
   "devDependencies": {
     "@types/debug": "^0.0.30",
