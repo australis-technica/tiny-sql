@@ -21,5 +21,11 @@ Or individual packages
 Usage:  
 see tests
 
+Scripts:
 
+set-version:  
+| sets packages/**/packkage.json#version from root package.json#version,  
+also in lerna.json (just in case)
 
+set-private:  
+| sets ./package.json#private=value where value true|false
