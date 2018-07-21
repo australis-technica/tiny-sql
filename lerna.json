@@ -8,7 +8,8 @@
     "packages/tiny-sql-connection-string-parse",
     "packages/tiny-sql-connection-factory",
     "packages/tiny-sql-scripts",
-    "packages/tiny-sql-batch-script"    
+    "packages/tiny-sql-batch-script",
+    "packages/tiny-sql"
   ],
 "version": "1.0.0-4"
   
