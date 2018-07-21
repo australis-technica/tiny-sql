@@ -6,7 +6,7 @@
   "scripts": {
     "build": "lerna --no-sort run build",
     "clean-modules": "rimraf **/node_modules/* && rm yarn.lock && yarn",
-    "test": "echo doesn\\'t work && lerna --no-sort run test"
+    "test": "echo doesn\\'t work && lerna --no-sort run test"    
   },
   "repository": {
     "type": "git",
@@ -27,13 +27,15 @@
     "packages/tiny-sql-connection-string-parse",
     "packages/tiny-sql-connection-factory",
     "packages/tiny-sql-scripts",
-    "packages/tiny-sql-batch-script"
+    "packages/tiny-sql-batch-script",
+    "packages/tiny-sql"
   ],
   "engines": {
     "yarn": "^1.7.0"
   },
   "devDependencies": {
-    "lerna": "^2.11.0"
+    "lerna": "^2.11.0",
+    "prettier": "^1.13.7"
   },
   "dependencies": {
     "cross-env": "^5.2.0"

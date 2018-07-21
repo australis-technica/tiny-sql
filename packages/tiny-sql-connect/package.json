@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-connect",
-  "private": true,
+  "private": false,
 "version": "1.0.0-3",
   "description": "tiny sql mapper for tediousjs",
   "main": "lib/index.js",
@@ -9,11 +9,8 @@
     "test": "jest --ci --env=node",
     "build": "tsc -p .",
     "clean": "rimraf ./lib",
-    "rebuild": "npm run clean && npm run build",
-    "set-private": "node ../../scripts/set-private.js --value=true",
-    "set-public": "node ../../scripts/set-private.js --value=false",
-    "publishit": "npm run set-public && npm publish --access public && npm run set-private",
-    "set-version": "cross-env TINY_SQL_VERSION=1.0.0-3 npm version $TINY_SQL_VERSION"
+    "rebuild": "npm run clean && npm run build",    
+    "publish": "npm publish --access public"        
   },
   "keywords": [
     "typescript",
