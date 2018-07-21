@@ -13,7 +13,7 @@
     "set-private": "node ../../scripts/set-private.js --value=true",
     "set-public": "node ../../scripts/set-private.js --value=false",
     "publishit": "npm run set-public && npm publish --access public && npm run set-private",
-    "set-version": "TINY_SQL_VERSION=1.0.0-3 npm version $TINY_SQL_VERSION"
+    "set-version": "cross-env TINY_SQL_VERSION=1.0.0-3 npm version $TINY_SQL_VERSION"
   },
   "keywords": [],
   "author": "daniel@australis-technica.com",
