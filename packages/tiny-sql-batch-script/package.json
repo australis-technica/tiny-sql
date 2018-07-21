@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-batch-script",
-  "version": "1.0.0-3",
+  "version": "1.0.0-4",
   "description": "run a sql/script \"GO\" splitted script ",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,7 +10,7 @@
     "build": "tsc -p .",
     "clean": "rimraf lib",
     "rebuild": "npm run clean && npm run build",
-    "publish": "npm publish --access public"
+    "publishit": "npm publish --access public"
   },
   "keywords": [],
   "author": "daniel@australis-technica.com",

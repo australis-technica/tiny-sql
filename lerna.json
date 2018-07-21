@@ -10,6 +10,6 @@
     "packages/tiny-sql-scripts",
     "packages/tiny-sql-batch-script"    
   ],
-"version": "1.0.0-2"
+"version": "1.0.0-4"
   
 }
