@@ -1,6 +1,6 @@
 {
   "name": "tiny-sql-tools",
-  "version": "1.0.0-4",
+  "version": "1.0.0-5",
   "description": "tiny ms-sql tools",
   "private": true,
   "scripts": {
@@ -30,6 +30,11 @@
     "packages/tiny-sql-connection-factory",
     "packages/tiny-sql-scripts",
     "packages/tiny-sql-batch-script",
+    "packages/tiny-sql-with-sql-connection",
+    "packages/tiny-sql-connect-to-server",
+    "packages/tiny-sql-create-db",
+    "packages/tiny-sql-json-table",
+    "packages/tiny-sql-simple-table",
     "packages/tiny-sql"
   ],
   "engines": {
