@@ -1,6 +1,6 @@
 {
   "name": "tiny-sql-tools",
-  "version": "1.0.0-11",
+  "version": "1.0.0-12",
   "description": "tiny ms-sql tools",
   "private": true,
   "scripts": {

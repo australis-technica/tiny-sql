@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-scripts",
-  "version": "1.0.0-11",
+  "version": "1.0.0-12",
   "description": "utility to read scripts from known common location",
   "private": false,
   "main": "lib/index.js",
