@@ -15,3 +15,4 @@ export {
 export {
   default as simpleTable
 } from "@australis/tiny-sql-simple-table";
+export { default as withSqlConnection } from "@australis/tiny-sql-with-sql-connection";
