@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-batch-script",
-  "version": "1.0.0-5",
+  "version": "1.0.0-6",
   "description": "run a sql/script \"GO\" splitted script ",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

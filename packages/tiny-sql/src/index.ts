@@ -12,3 +12,6 @@ export {
 export {
   default as connecitonStringParse
 } from "@australis/tiny-sql-connection-string-parse";
+export {
+  default as simpleTable
+} from "@australis/tiny-sql-simple-table";
