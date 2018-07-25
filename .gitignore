@@ -40,3 +40,7 @@ yarn-error.log*
 
 *.zip
 *.tgz
+
+*.test.env 
+*.dev.env
+*.prod.env
