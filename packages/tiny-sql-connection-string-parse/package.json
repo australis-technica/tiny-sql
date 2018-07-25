@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-connection-string-parse",
-  "version": "1.0.0-9",
+  "version": "1.0.0-10",
   "description": "",
   "private": false,
   "main": "lib/index.js",
