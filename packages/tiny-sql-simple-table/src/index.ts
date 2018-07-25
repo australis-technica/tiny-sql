@@ -107,10 +107,19 @@ select * from ${TABLE_NAME}
     }
   }
 
+  async function exists(connection: Connection, ): Promise<boolean> {
+      return ExecSql(connection)<{ exists: boolean}>(`
+      select [exists]=CAST( case when exists(select top 1 name from sys.tables where name = @name) then 1 else 0 end as BIT) 
+      `, { name: TABLE_NAME}).then(x=> !!x.values[0].exists);
+  }
+
   async function init(connection: Connection) {
     try {
       const execSql = ExecSql(connection);
-      await execSql(dto);
+      // ... 
+      if (!(await exists(connection))) {
+        await execSql(dto);
+      }
       return execSql<{ ok: number }>(
         `select ok=1 from sys.tables where name = '${TABLE_NAME}'`
       ).then(x => x.values[0]["ok"] === 1);
@@ -167,7 +176,10 @@ select * from ${TABLE_NAME}
   /** */
   async function remove(connection: Connection, id: string | number) {
     try {
-      const r = await ExecSql(connection)(`DELETE ${TABLE_NAME} where id = @id`, { id });
+      const r = await ExecSql(connection)(
+        `DELETE ${TABLE_NAME} where id = @id`,
+        { id }
+      );
       if (r.error) return Promise.reject(r.error);
       return Promise.resolve(r);
     } catch (error) {
@@ -175,11 +187,12 @@ select * from ${TABLE_NAME}
       return Promise.reject(error);
     }
   }
-/** */
+  /** */
   return {
     add,
     all,
     byId,
+    exists,
     findBy,
     init,
     update,

@@ -32,7 +32,7 @@ describe(require(join(__dirname, "../package.json")).name, () => {
     /**
      * 
      */
-    const src = SimpleTable<Xyz>("Xyz", `
+    const table = SimpleTable<Xyz>("Xyz", `
       create table Xyz(
         id varchar(1024) NOT NULL UNIQUE default NEWID(),
         displayName varchar(max) NOT NULL,
@@ -42,11 +42,14 @@ describe(require(join(__dirname, "../package.json")).name, () => {
       );
     `);
 
-    const ok = await withSqlConnection(connect, src.init);
+    let ok = await withSqlConnection(connect, table.init);
+    expect(ok).toBe(true);
+    //  try again ... if not exists
+    ok = await withSqlConnection(connect, table.init);
     expect(ok).toBe(true);
     
     const _new = await withSqlConnection(connect, con =>
-      src.add(con, { id: "x", displayName: "x" })
+      table.add(con, { id: "x", displayName: "x" })
     );
     const { id, displayName, enabled, createdAt, updatedAt } = _new;
     expect(id).toBe("x");
@@ -72,16 +75,16 @@ describe(require(join(__dirname, "../package.json")).name, () => {
         .slice(0, 4)
         .join(" ")
     ).toMatch(today);
-    const all = await withSqlConnection(connect, src.all);
+    const all = await withSqlConnection(connect, table.all);
     expect(all[0].id).toBe("x");
-    const y = await withSqlConnection(connect, c=> src.update(c, { id: "x", displayName: "y"}));
+    const y = await withSqlConnection(connect, c=> table.update(c, { id: "x", displayName: "y"}));
     expect(y.displayName).toBe("y");
-    const values = await withSqlConnection(connect, c=>src.findBy(c, { displayName: "y"}));
+    const values = await withSqlConnection(connect, c=>table.findBy(c, { displayName: "y"}));
     // TODO:
     expect(values[0].displayName).toBe("y");
-    const {affected } = await withSqlConnection(connect, c=> src.remove(c, "x"));
+    const {affected } = await withSqlConnection(connect, c=> table.remove(c, "x"));
     expect(affected.reduce((prev, next)=> prev+next)).toBe(1);
-    const x = await withSqlConnection(connect, src.all);
+    const x = await withSqlConnection(connect, table.all);
     expect(x.length).toBe(0);
   });
 });
