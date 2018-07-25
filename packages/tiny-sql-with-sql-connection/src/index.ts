@@ -1,4 +1,6 @@
 import { Connection } from "tedious";
+import { debugModule } from "@australis/create-debug";
+const debug = debugModule(module);
 /** */
 export default async function withConnection<T>(
     f: () => Promise<Connection>,
@@ -10,7 +12,7 @@ export default async function withConnection<T>(
       const r = await callback(conn);    
       return Promise.resolve(r);
     } catch (e) {
-      console.error(e);
+      debug(e);
       return Promise.reject(e);
     } finally {    
       conn && conn.close();
