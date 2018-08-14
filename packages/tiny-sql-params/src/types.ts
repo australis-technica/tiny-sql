@@ -1,17 +1,15 @@
 import { ParameterOptions, TediousType } from "tedious";
-
-export type TediousParams = {
+/** */
+export type TediousParameter = {
     name: string;
     type: TediousType;
     value: any;
     options?: ParameterOptions;
 };
-
+/** */
 export interface Indexer {
     [key: string]: any;
 }
-
-
 /**
  * 
  */

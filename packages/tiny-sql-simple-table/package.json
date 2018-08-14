@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-simple-table",
-  "version": "1.0.0-12",
+  "version": "1.0.0-13",
   "description": "with sql connection",
   "private": false,
   "main": "lib/index.js",
