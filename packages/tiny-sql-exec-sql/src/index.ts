@@ -84,7 +84,7 @@ export default function execSql(connection: Connection) {
         }
       );
       const params = getParams(args);
-      if (params && params.length) {
+      if (params && params.length > 0) {
         for (const p of params) {
           const { name, type, value, options } = p;
           request.addParameter(name, type, value, options);
