@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-create-db",
-  "version": "1.0.0-14",
+  "version": "1.0.0-15",
   "description": "",
   "private": false,
   "main": "lib/index.js",

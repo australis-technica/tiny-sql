@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-connection-factory",
-  "version": "1.0.0-14",
+  "version": "1.0.0-15",
   "description": "create new ms-sql/tedious, connection from connection-config from env key",
   "private": false,
   "main": "lib/index.js",
