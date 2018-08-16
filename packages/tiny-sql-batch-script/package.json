@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-batch-script",
-  "version": "1.0.0-13",
+  "version": "1.0.0-14",
   "description": "run a sql/script \"GO\" splitted script ",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -45,7 +45,7 @@
     "typescript": "2.9.2"
   },
   "dependencies": {
-    "@australis/create-debug": "latest"
+    "@australis/create-debug": "^1.0.2"
   },
   "directories": {
     "lib": "lib",

@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-connection-string-parse",
-  "version": "1.0.0-13",
+  "version": "1.0.0-14",
   "description": "",
   "private": false,
   "main": "lib/index.js",
@@ -36,7 +36,7 @@
     ]
   },
   "dependencies": {
-    "@australis/create-debug": "^1.0.0-0",
+    "@australis/create-debug": "^1.0.2",
     "tedious": "^2.6.3"
   },
   "devDependencies": {

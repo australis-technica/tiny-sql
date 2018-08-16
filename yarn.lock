@@ -2,9 +2,15 @@
 # yarn lockfile v1
 
 
-"@australis/create-debug@^1.0.0-0", "@australis/create-debug@latest":
+"@australis/create-debug@^1.0.0-0":
   version "1.0.0-0"
   resolved "https://registry.yarnpkg.com/@australis/create-debug/-/create-debug-1.0.0-0.tgz#b6d93fb2f19814838d15e9220992bf082fc5b2a0"
+  dependencies:
+    debug "^3.1.0"
+
+"@australis/create-debug@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@australis/create-debug/-/create-debug-1.0.2.tgz#962dd316b18526505f76473bcf57fc2c61a4a84f"
   dependencies:
     debug "^3.1.0"
 
