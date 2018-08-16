@@ -10,7 +10,7 @@ export default function Init(TABLE_NAME: string, dto: string, exists: (connectio
     /**
      * 
      */
-    return async function init(connection: Connection) {
+    return async function init(connection: Connection): Promise<boolean> {
         try {
             const execSql = ExecSql(connection);
             // ... 
