@@ -1,4 +1,4 @@
-import execSql from "@australis/tiny-sql-exec-sql";
+import execSql, { Result } from "@australis/tiny-sql-exec-sql";
 import { Connection } from "tedious";
 import connectToServer from "@australis/tiny-sql-connect-to-server";
 import { debugModule } from "@australis/create-debug";
@@ -6,7 +6,7 @@ const debug = debugModule(module);
 /**
  * create database if not exists
  */
-export default async function createSqlDb(database: string) {
+export default async function createSqlDb(database: string): Promise<Result<{}>> {
   let connection: Connection;
   try {
     // do connect to database
