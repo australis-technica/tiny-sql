@@ -1,10 +1,10 @@
-import ExecSql from "@australis/tiny-sql-exec-sql";
+import ExecSql, { Result } from "@australis/tiny-sql-exec-sql";
 import { Connection } from "tedious";
 import { debugModule } from "@australis/create-debug";
 const debug = debugModule(module);
 
 export default function (tableName: string /** */) {
-  return (connection: Connection) => {
+  return (connection: Connection): Promise<Result<{}>> => {
     const execSql = ExecSql(connection);
     try {
       return execSql(`
