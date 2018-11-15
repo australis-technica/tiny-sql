@@ -1,7 +1,1 @@
-import connect from "@australis/tiny-sql-connect";
-import connectionConfig from "@australis/tiny-sql-connection-config";
-import { Connection } from "tedious";
-/**
- * default conneciton from defaul env var
- */
-export default (envKey = "DB"): Promise<Connection> => connect(connectionConfig(envKey));
+export { default } from "./connection-factory";

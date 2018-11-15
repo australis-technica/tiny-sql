@@ -44,3 +44,5 @@ yarn-error.log*
 *.test.env 
 *.dev.env
 *.prod.env
+
+*.lock

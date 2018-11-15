@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql",
-  "version": "1.0.0-15",
+  "version": "1.0.0-16",
   "description": "meta package",
   "private": false,
   "main": "lib/index.js",
@@ -36,19 +36,21 @@
     ]
   },
   "dependencies": {
-    "@australis/tiny-sql-batch-script": "1.0.0-15",
-    "@australis/tiny-sql-connect": "1.0.0-15",
-    "@australis/tiny-sql-connection-config": "1.0.0-15",
-    "@australis/tiny-sql-connection-factory": "1.0.0-15",
-    "@australis/tiny-sql-connection-string-parse": "1.0.0-15",
-    "@australis/tiny-sql-exec-sql": "1.0.0-15",
-    "@australis/tiny-sql-params": "1.0.0-15",
-    "@australis/tiny-sql-scripts": "1.0.0-15",
-    "@australis/tiny-sql-connect-to-server": "1.0.0-15",
-    "@australis/tiny-sql-create-db": "1.0.0-15",
-    "@australis/tiny-sql-json-table": "1.0.0-15",
-    "@australis/tiny-sql-simple-table": "1.0.0-15",
-    "@australis/tiny-sql-with-sql-connection": "1.0.0-15"
+    "@australis/tiny-sql-batch-script": "1.0.0-16",
+    "@australis/tiny-sql-connect": "1.0.0-16",
+    "@australis/tiny-sql-connect-to-server": "1.0.0-16",
+    "@australis/tiny-sql-connection-config": "1.0.0-16",
+    "@australis/tiny-sql-connection-factory": "1.0.0-16",
+    "@australis/tiny-sql-connection-string-parse": "1.0.0-16",
+    "@australis/tiny-sql-create-db": "1.0.0-16",
+    "@australis/tiny-sql-exec-sql": "1.0.0-16",
+    "@australis/tiny-sql-json-table": "1.0.0-16",
+    "@australis/tiny-sql-params": "1.0.0-16",
+    "@australis/tiny-sql-scripts": "1.0.0-16",
+    "@australis/tiny-sql-simple-repo": "1.0.0-16",
+    "@australis/tiny-sql-simple-table": "1.0.0-16",
+    "@australis/tiny-sql-use-sql-connection": "1.0.0-16",
+    "@australis/tiny-sql-with-sql-connection": "1.0.0-16"
   },
   "devDependencies": {
     "@types/debug": "^0.0.30",
@@ -57,6 +59,6 @@
     "rimraf": "^2.6.2",
     "ts-jest": "22.4.4",
     "ts-node": "^5.0.0",
-    "typescript": "2.9.2"
+    "typescript": "3.1.6"
   }
 }

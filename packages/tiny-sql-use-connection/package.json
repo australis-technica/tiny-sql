@@ -1,7 +1,7 @@
 {
-  "name": "@australis/tiny-sql-json-table",
+  "name": "@australis/tiny-sql-use-connection",
   "version": "1.0.0-16",
-  "description": "sql json table",
+  "description": "with sql connection",
   "private": false,
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
