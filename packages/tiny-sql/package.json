@@ -7,9 +7,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --ci --env=node",
-    "build": "tsc -p .",
-    "clean": "rimraf lib",
-    "rebuild": "npm run clean && npm run build",
+    "build": "rimraf lib && tsc -p .",
     "publishit": "npm publish --access public",
     "set-version": "node ./scripts/set-version.js"
   },
