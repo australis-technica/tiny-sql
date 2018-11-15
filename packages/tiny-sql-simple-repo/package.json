@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-simple-repo",
-  "version": "1.0.0-16",
+  "version": "1.0.0-17",
   "description": "Simple Table Repo",
   "private": false,
   "main": "lib/index.js",
@@ -34,8 +34,8 @@
   },
   "dependencies": {
     "@australis/create-debug": "^1.0.2",
-    "@australis/tiny-sql-exec-sql": "^1.0.0-16",
-    "@australis/tiny-sql-params": "^1.0.0-16",
+    "@australis/tiny-sql-exec-sql": "1.0.0-17",
+    "@australis/tiny-sql-params": "1.0.0-17",
     "@types/node": "^10.12.8",
     "tedious": "^3.0.1"
   },

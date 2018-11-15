@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-json-table",
-  "version": "1.0.0-16",
+  "version": "1.0.0-17",
   "description": "sql json table",
   "private": false,
   "main": "lib/index.js",

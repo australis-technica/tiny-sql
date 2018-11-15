@@ -34,45 +34,46 @@ export default function execSql(connection: Connection) {
         if (error) {
           return reject(error);
         }
-        debug(":request:row-count " + rowCount);
-        debug(":request:rows \n" + JSON.stringify(rows));
-        debug(":request: closing...");
+        debug("request:callback " , error,  rowCount, rows && rows.length);                
         request.removeAllListeners();
-        debug(":request: resolving...");
         resolve({ values, status, affected, error, connection });
       });
 
       request.on("row", (columns: ColumnValue[]) => {
         const row: any = {};
-        columns.forEach((column, index) => {
-          row[column.metadata.colName] = column.value;
-          debug(
-            "row:columns:" +
-            index +
-            "\n" +
-            JSON.stringify(column.metadata.colName)
-          );
+        columns.forEach((column) => {
+          row[column.metadata.colName] = column.value;          
         });
         values.push(row);
       });
 
-      request.on(
-        "doneProc",
-        (_rowCount: number, _more: boolean, returnStatus: any) => {
-          status = returnStatus;
-        }
+      request.on("doneProc", (error: Error, more: boolean, rows: any[]) => {
+        status = {
+          error,
+          more,
+          rows
+        };
+        debug("doneProc: ", status);
+      }
       );
 
-      request.on("done", (rowCount: number, _more: any) => {
-        debug(":doneInProc:rows: " + rowCount);
-        debug(":doneInProc:more: " + _more);
-        if (rowCount != null) affected.push(rowCount);
+      request.on("done", (error: Error, more: boolean, rows: any[]) => {
+        status = {
+          error,
+          more,
+          rows
+        };
+        debug("done: ", status);
       });
 
-      request.on("doneInProc", (rowCount: number, _more: any) => {
-        debug(":doneInProc:rows: " + rowCount);
-        debug(":doneInProc:more: " + _more);
-        if (rowCount != null) affected.push(rowCount);
+      request.on("doneInProc", (error: Error, more: boolean, returnStatus: any, rows: any[]) => {
+        status = {
+          error,
+          more,
+          rows,
+          returnStatus
+        };
+        debug("doneInProc: ", status);
       });
 
       request.on(

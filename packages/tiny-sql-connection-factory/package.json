@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-connection-factory",
-  "version": "1.0.0-16",
+  "version": "1.0.0-17",
   "description": "create new ms-sql/tedious, connection from connection-config from env key",
   "private": false,
   "main": "lib/index.js",
@@ -33,12 +33,12 @@
     ]
   },
   "dependencies": {
-    "tedious": "^2.6.3"
+    "tedious": "^3.0.1"
   },
   "devDependencies": {
     "@australis/load-env": "latest",
     "@types/jest": "^22.2.3",
-    "@types/tedious": "^1.8.33",
+    "@types/tedious": "^2.6.1",
     "jest": "22.4.3",
     "rimraf": "^2.6.2",
     "ts-jest": "22.4.4",
