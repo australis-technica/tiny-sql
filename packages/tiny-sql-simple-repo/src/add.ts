@@ -1,6 +1,6 @@
-import { Connection } from "tedious";
-import ExecSql from "@australis/tiny-sql-exec-sql";
 import { debugModule } from "@australis/create-debug";
+import { Exec } from "@australis/tiny-sql-exec-sql";
+import { Connection } from "tedious";
 import byid from "./by-id";
 import { BasicTable } from "./types";
 const debug = debugModule(module);
@@ -25,7 +25,7 @@ export default function Add<T extends BasicTable>(tableName: string) {
                     .join(",")}) 
         `;
             debug(sql);
-            await ExecSql(connection)<T>(sql, item);
+            await Exec<T>(sql, item)(connection);
             return byid<T>(tableName)(item.id)(connection);
         } catch (error) {
             debug(error);

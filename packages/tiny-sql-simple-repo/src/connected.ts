@@ -1,7 +1,7 @@
 import using from "@australis/tiny-sql-use-connection";
+import connect from "./connect";
 import simpleRepo from "./simple-repo";
 import { BasicTable } from "./types";
-import connect from "./connect";
 export default <T extends BasicTable>(tableName: string, creationScript: string, envKey?: string) => {
     const {
         add,
