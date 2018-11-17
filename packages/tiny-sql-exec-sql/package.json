@@ -37,7 +37,8 @@
     ]
   },
   "dependencies": {
-    "debug": "^3.1.0",
+    "@australis/create-debug": "^1.0.2",
+    "@australis/tiny-sql-params": "1.0.0-18",
     "tedious": "^3.0.1"
   },
   "devDependencies": {

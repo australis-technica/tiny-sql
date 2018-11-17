@@ -33,7 +33,7 @@
     ]
   },
   "dependencies": {
-    "@australis/tiny-sql-connection-string-parse": "1.0.0-17"
+    "@australis/tiny-sql-connection-string-parse": "1.0.0-18"
   },
   "devDependencies": {
     "@types/tedious": "^2.6.1",
