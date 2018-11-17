@@ -1,7 +1,7 @@
 {
   "name": "@australis/tiny-sql-exec-sql",
   "private": false,
-  "version": "1.0.0-18",
+  "version": "1.0.0-19",
   "description": "tiny sql mapper for tediousjs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@australis/create-debug": "^1.0.2",
-    "@australis/tiny-sql-params": "1.0.0-18",
+    "@australis/tiny-sql-params": "1.0.0-19",
     "tedious": "^3.0.1"
   },
   "devDependencies": {
