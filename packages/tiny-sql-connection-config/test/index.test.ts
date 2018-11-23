@@ -1,29 +1,20 @@
-process.env.NODE_ENV = "test";
-import "@australis/load-env";
+beforeAll(() => {
+    process.env.DB = "sql://xyz/db";
+    process.env.DB1 = "sql://abc/db1";
+});
 /** */
 describe("connection-config", () => {
     it("works without parameters", async () => {
         const connectionConfig = (await import("../src")).default();
-        expect(connectionConfig.server).toEqual("localhost");
-        expect(connectionConfig.userName).toEqual("sa");
-        expect(connectionConfig.password).toEqual("P@55w0rd!");
-        expect(connectionConfig.options.database).toEqual("testdb");
-        expect(connectionConfig.options.encrypt).toBe(false);
+        expect(connectionConfig.server).toEqual("xyz");
+        expect(connectionConfig.options.database).toEqual("db");
     })
-    it("works with parameters", async () => {        
+    it("works with parameters", async () => {
         const connectionConfig = (await import("../src")).default("DB1");
-        expect(connectionConfig.server).toEqual("local");
-        expect(connectionConfig.userName).toEqual("me");
-        expect(connectionConfig.password).toEqual("password");
-        expect(connectionConfig.options.database).toEqual("xdb");
-        expect(connectionConfig.options.encrypt).toBe(true);
+        expect(connectionConfig.server).toEqual("abc");
     })
-    it("changes key", async () => {        
+    it("changes key", async () => {
         const connectionConfig = (await import("../src")).default();
-        expect(connectionConfig.server).toEqual("localhost");
-        expect(connectionConfig.userName).toEqual("sa");
-        expect(connectionConfig.password).toEqual("P@55w0rd!");
-        expect(connectionConfig.options.database).toEqual("testdb");
-        expect(connectionConfig.options.encrypt).toBe(false);
+        expect(connectionConfig.server).toEqual("xyz");
     })
 });
