@@ -5,10 +5,9 @@
   "private": true,
   "scripts": {
     "clean-modules": "rimraf **/node_modules/* && rm yarn.lock && yarn",
-    "test": "echo doesn\\'t work && lerna --no-sort run test",
-    "pretty:package": "prettier package.json --write && prettier packages/**/package.json --write",
-    "publishit": "lerna run publishit",
-    "set-version": "node ./scripts/set-version.js && cd packages/tiny-sql && npm run set-version"
+    "test": "echo doesn\\'t work",
+    "pretty:package": "prettier package.json --write && prettier packages/**/package.json --write",    
+    "set-version": "node ./scripts/set-version.js"
   },
   "repository": {
     "type": "git",
@@ -42,8 +41,7 @@
   "engines": {
     "yarn": "^1.7.0"
   },
-  "devDependencies": {
-    "lerna": "^2.11.0",
+  "devDependencies": {    
     "prettier": "^1.13.7"
   },
   "dependencies": {

@@ -8,8 +8,7 @@
   "scripts": {
     "test": "jest --ci --env=node",
     "build": "rimraf lib && tsc -p .",
-    "publishit": "npm publish --access public",
-    "set-version": "node ./scripts/set-version.js"
+    "publishit": "npm publish --access public"
   },
   "keywords": [],
   "author": "daniel@australis-technica.com",

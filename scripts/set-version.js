@@ -1,45 +1,70 @@
 #!/usr/bin/env node
 const { join, resolve } = require("path");
+const { existsSync } = require("fs");
 const { workspaces, version } = require("../package.json");
 const validVersion = require("./valid-version");
 const changeVersion = require("./change-version");
 const cwd = process.cwd();
-const rootVersion = version;
+const projectVersion = version;
 const args = process.argv.slice(2);
-let verbose = args.find(a => /(--verbose|-v)/.test(a));
-verbose = typeof verbose === "string";
-log = verbose ? console.log.bind(console) : () => {};
+let quiet = args.find(a => /(--quiet|-v)/.test(a));
+quiet = typeof quiet === "string";
+log = !quiet ? console.log.bind(console) : () => {};
 /**
  * Start
  */
-if (!rootVersion) {
+if (!projectVersion) {
   showUsage();
   process.exit(-1);
 }
-log("root-version: %s", rootVersion);
-if (!validVersion(rootVersion)) {
-  log("invalid version '%s' use: \\d+.\\d+.\\d+(-\\d+)?", rootVersion);
+log("root-version: %s", projectVersion);
+if (!validVersion(projectVersion)) {
+  log("invalid version '%s' use: \\d+.\\d+.\\d+(-\\d+)?", projectVersion);
   showUsage();
   process.exit(-1);
 }
 const packages = workspaces.map(x => {
   const path = join(cwd, x, "package.json");
-  const { name, version } = require(path);
+  const { name, version, dependencies } = require(path);
   return {
     path,
     name,
-    version
+    version,
+    dependencies,
   };
 });
-log(packages);
+const workspaceNames = packages.map(x => x.name);
+log("Workspaces:\n", workspaceNames.join("\n"));
 // run
-for (const pkg of packages) {
-  const { path } = pkg;
-  changeVersion(path, rootVersion);
-  log("set-version: %s => %s", path, version);
+let changed = false;
+for (const workspace of packages) {
+  if (workspace.version !== projectVersion) {
+    changeVersion(workspace.path, projectVersion);
+    log("set-version: %s => %s", workspace.path, version);
+    changed = true;
+  }
+  if (workspace.dependencies) {
+    for (const dependencyName of workspaceNames) {
+      if (dependencyName in workspace.dependencies) {
+        //  Todo Change Dependecy Version
+        if (workspace.dependencies[dependencyName] !== projectVersion) {
+          console.log(
+            '"%s" reference "%s":"%s"',
+            workspace.name,
+            dependencyName,
+            workspace.dependencies[dependencyName],
+          );
+        }
+      }
+    }
+  }
 }
-changeVersion(resolve("lerna.json"), rootVersion);
-log("set-version: %s => %s", "lerna.json", version);
+if (existsSync(resolve(cwd, "lerna.json"))) {
+  changeVersion(resolve("lerna.json"), projectVersion);
+  log("set-version: %s => %s", "lerna.json", version);
+  changed = true;
+}
+log("%s", changed ? "Changed" : "No changes");
 /**
  *
  */
