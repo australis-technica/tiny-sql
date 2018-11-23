@@ -1,4 +1,3 @@
-/** */
 describe("parse-connection-string", () => {
   it("works", async () => {
       const parseString = (await import("../src")).default;
