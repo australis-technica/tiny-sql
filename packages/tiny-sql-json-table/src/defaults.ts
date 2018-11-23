@@ -1,25 +1,28 @@
-import execSql from "@australis/tiny-sql-exec-sql";
-import { Connection } from "tedious";
+import { Exec } from "@australis/tiny-sql-exec-sql";
 import { debugModule } from "@australis/create-debug";
+import { Connection } from "tedious";
 const debug = debugModule(module);
-
-export default function(tableName: string) {
+/**
+ * Insert if not exists 
+ * @param tableName 
+ */
+export default function (tableName: string) {
   /** */
-  return async (connection: Connection, values: { [key: string]: any }) => {
+  return (values: { [key: string]: any }) => async (connection: Connection) => {
     try {
-      const keyValues = Object.keys(values).map(key => ({
+
+      const execs = Object.keys(values).map(key => ({
         key,
         value: JSON.stringify(values[key])
-      }));
-      for (const keyValue of keyValues) {
-        const { key, value } = keyValue;
-        await execSql(connection)(`
-        if not exists (select [key] from ${tableName} where [key] = '${key}' )
-        insert into ${tableName}
-          ([key], [value])
-        values 
-          ('${key}', '${value}');
-        `);
+      })).map(({ key, value }) => Exec(`
+      if not exists (select [key] from ${tableName} where [key] = @key )
+      insert into ${tableName}
+        ([key], [value])
+      values 
+        (@key, @value);`, { key, value }));
+
+      for (const ex of execs) {
+        await ex(connection);
       }
       return Promise.resolve();
     } catch (error) {

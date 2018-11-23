@@ -1,6 +1,6 @@
-import ExecSql from "@australis/tiny-sql-exec-sql";
+import { Exec } from "@australis/tiny-sql-exec-sql";
 import { Connection } from "tedious";
-import {  KeyValue } from "./types";
+import { KeyValue } from "./types";
 import { debugModule } from "@australis/create-debug";
 const debug = debugModule(module);
 /** */
@@ -8,11 +8,9 @@ const find = (tableName: string, like: string) =>
     /** */
     async (connection: Connection): Promise<{ [key: string]: any }> => {
         try {
-            const execSql = ExecSql(connection);
-            const { values } = await execSql<KeyValue>(
-                `select top 1 [key], [value] from ${tableName} where [key] like '${like}'`                
-            );
-            return values
+            return Exec<KeyValue>(
+                `select top 1 [key], [value] from ${tableName} where [key] like '${like}'`
+            )(connection).then(({ values }) => values
                 .map(x => {
                     const { key, value } = x;
                     try {
@@ -29,7 +27,7 @@ const find = (tableName: string, like: string) =>
                         return Object.assign(out, next);
                     },
                     {} as { [key: string]: any }
-                );
+                ))
         } catch (error) {
             debug(error);
             return Promise.reject(error);
