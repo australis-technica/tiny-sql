@@ -1,7 +1,7 @@
 {
   "name": "@australis/tiny-sql-params",
   "private": false,
-  "version": "1.0.0-20",
+  "version": "1.0.0-21",
   "description": "tiny sql mapper for tediousjs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

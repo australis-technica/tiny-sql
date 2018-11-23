@@ -10,7 +10,7 @@ module.exports = (pkg, dependencyName, version) => {
     writeFileSync(
       path,
       readFileSync(path, "utf-8").replace(
-        new RegExp(`"${dependencyName}":\s+"(.*)"`),
+        new RegExp(`"${dependencyName}":\\s+?"\\^?.*"`),
         `"${dependencyName}": "${version}"`
       )
     );

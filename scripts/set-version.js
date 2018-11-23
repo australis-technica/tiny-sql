@@ -52,9 +52,8 @@ for (const workspace of packages) {
       if (dependencyName in workspace.dependencies) {
         //  Todo Change Dependecy Version
         if (workspace.dependencies[dependencyName] !== projectVersion) {
-          console.log('Wiorkspace "%s" Dependency "%s" version: "%s" -> "%s"', workspace.name, dependencyName, workspace.dependencies[dependencyName], projectVersion);
-          const dependencyPackage = packages.find(p => p.name === dependencyName);
-          changeDependencyVersion(dependencyPackage, dependencyName, projectVersion);
+          console.log('Workspace "%s" Dependency "%s" version: "%s" -> "%s"', workspace.name, dependencyName, workspace.dependencies[dependencyName], projectVersion);
+          changeDependencyVersion(workspace, dependencyName, projectVersion);
           changed=true;
         }
       }

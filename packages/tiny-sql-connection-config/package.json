@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-connection-config",
-  "version": "1.0.0-20",
+  "version": "1.0.0-21",
   "description": "It provides ms-sql/tedious connection config from connection-string from env key.",
   "private": false,
   "main": "lib/index.js",
@@ -14,7 +14,7 @@
   "author": "daniel@australis-technica.com",
   "license": "MIT",
   "dependencies": {
-    "@australis/tiny-sql-connection-string-parse": "1.0.0-20"
+    "@australis/tiny-sql-connection-string-parse": "1.0.0-21"
   },
   "devDependencies": {
     "@types/tedious": "^2.6.1",
