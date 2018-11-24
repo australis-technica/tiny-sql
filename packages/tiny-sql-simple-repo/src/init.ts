@@ -1,5 +1,5 @@
 import { Connection } from "tedious";
-import { Exec } from "@australis/tiny-sql-exec-sql";
+import Exec from "@australis/tiny-sql-exec-sql";
 import { debugModule } from "@australis/create-debug";
 import exists from "./exists";
 

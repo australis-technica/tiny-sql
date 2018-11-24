@@ -13,10 +13,9 @@ export default function parseSqlClientLike(connectionString: string): Connection
     }
 
     function find(keyToFind: string | RegExp) {
-        if (typeof keyToFind === "string")
-            /** */
-            return (key: string) => key && key.toLowerCase().trim() === keyToFind.toLowerCase();
-        return (key: string) => keyToFind.test(key);
+        if (typeof keyToFind === "string")            
+            return (key: string): boolean => !!key && key.toLowerCase().trim() === keyToFind.toLowerCase();
+        return (key: string): boolean => keyToFind.test(key);
     }
     const config = connectionString
         .split(";")

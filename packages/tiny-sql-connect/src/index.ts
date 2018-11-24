@@ -16,7 +16,7 @@ export default function connect (args: ConnectionConfig | Connection) {
         return reject(error);
       });
     } catch (error) {
-      reject(error);
+      return reject(error);
     }
   });
 };

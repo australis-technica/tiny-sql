@@ -1,4 +1,4 @@
-import { Exec } from "@australis/tiny-sql-exec-sql";
+import Exec from "@australis/tiny-sql-exec-sql";;
 
 export default function (tableName: string /** */) {
   return Exec(`

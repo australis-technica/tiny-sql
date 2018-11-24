@@ -1,4 +1,4 @@
-import { Exec } from "@australis/tiny-sql-exec-sql";
+import Exec from "@australis/tiny-sql-exec-sql";
 import { debugModule } from "@australis/create-debug";
 import { Connection } from "tedious";
 const debug = debugModule(module);

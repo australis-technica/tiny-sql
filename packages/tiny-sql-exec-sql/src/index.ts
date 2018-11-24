@@ -1,2 +1,1 @@
-export { default, Result } from "./exec-sql";
-export { default as Exec, Result as ExecResult } from "./exec";
+export { default } from "./exec-sql";

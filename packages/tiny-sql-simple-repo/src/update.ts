@@ -1,5 +1,5 @@
 import { Connection } from "tedious";
-import { Exec } from "@australis/tiny-sql-exec-sql";
+import Exec from "@australis/tiny-sql-exec-sql";
 import { debugModule } from "@australis/create-debug";
 import {
   combineFilters,
@@ -53,11 +53,6 @@ export default <T extends Partial<BasicTable>>(TABLE_NAME: string) => {
             `,
         params,
       )(connection);
-      if (r.error) {
-        return Promise.reject(r.error);
-      }
-      // if(r.affected === ) { return Promise.reject(r.error); }
-      // if(r.status === ) { return Promise.reject(r.error); }
       const { id } = item;
       const result = await Exec<T>(
         `select top 1 * from ${TABLE_NAME} where id = @id`,

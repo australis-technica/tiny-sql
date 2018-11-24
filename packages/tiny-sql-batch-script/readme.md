@@ -1,1 +1,1 @@
-run a sql/script "GO" splitted script file 
+run a sql/script "GO" splitted script

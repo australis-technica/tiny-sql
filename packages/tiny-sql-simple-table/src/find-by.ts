@@ -13,8 +13,7 @@ export default function FindBy<T>(TABLE_NAME: string) {
         connection: Connection,
         params: Partial<T>
     ): Promise<T[]> {
-        try {
-            const execSql = ExecSql(connection);
+        try {            
             const query = `/*find-by*/
     select * from ${TABLE_NAME} 
       where ${Object.keys(params)
@@ -22,10 +21,7 @@ export default function FindBy<T>(TABLE_NAME: string) {
                     .join(" AND ")};
     /*find-by*/`;
             debug(query);
-            const r = await execSql<T>(query, params);
-            if (r.error) {
-                return Promise.reject(r.error);
-            }
+            const r = await ExecSql<T>(query, params)(connection);         
             return Promise.resolve(r.values);
         } catch (error) {
             debug(error);

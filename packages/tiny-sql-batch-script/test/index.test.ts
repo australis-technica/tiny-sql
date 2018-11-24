@@ -1,26 +1,19 @@
-import { Connection } from "tedious";
 import connect from "@australis/tiny-sql-connect";
-import { join } from "path";
-import { isError } from "util";
+import getConfig from "@australis/tiny-sql-connection-config";
+import using from "@australis/tiny-sql-use-connection";
 
-const connectionConfig = require(join(__dirname, "../.secrets/connection-config.json"));
-
-describe("run-batch-scipt", ()=>{
-    it("works", async ()=> {
-        const runBatch = (await import("../src")).default;
-        let connection: Connection;
-        try {
-            connection = await connect(connectionConfig);
-            const results = await runBatch(connection, "batch.sql", {
-                // bail: true,
-                scriptsHome: join(__dirname, "./")
-            });            
-            expect((results[0] as any).values[0].ok).toBe(0);
-            expect((results[1] as any).values[0].ok).toBe(1);
-            expect(results.length).toBe(2);
-            expect(results.filter(x=> isError(x)).length).toBe(0);
-        } finally {
-            connection && connection.close();
-        }
-    })
-})
+describe("run-batch-scipt", () => {
+  it("works", async () => {
+    const runBatch = (await import("../src")).default;
+    const run = runBatch(`
+        select 0 as ok;
+        GO
+        select 1 as ok;
+        GO
+        `);    
+    const results = await using(()=> connect(getConfig("TINY_SQL_TEST_DB")))(run);
+    expect((results[0] as any).values[0].ok).toBe(0);
+    expect((results[1] as any).values[0].ok).toBe(1);
+    expect(results.length).toBe(2);
+  });
+});

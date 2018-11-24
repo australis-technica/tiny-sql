@@ -4,8 +4,11 @@ export type TediousParameter = {
     name: string;
     type: TediousType;
     value: any;
-    options?: ParameterOptions;
-};
+    /**
+     * is Output parameter
+     */
+    out?: boolean;
+} & ParameterOptions;
 /** */
 export interface Indexer {
     [key: string]: any;

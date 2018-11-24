@@ -1,5 +1,5 @@
 import { Connection } from "tedious";
-import ExecSql from "@australis/tiny-sql-exec-sql";
+import execSql from "@australis/tiny-sql-exec-sql";
 import { debugModule } from "@australis/create-debug";
 import { combineFilters, excludeKeys, filterKeys, getFields, notNullField} from "@australis/tiny-sql-params";
 import { BasicTable } from "./types";
@@ -20,13 +20,12 @@ export default function Update<T extends Partial<BasicTable> & { id: string | nu
             return Promise.reject(
                 new Error(`@param ${TABLE_NAME}: ${TABLE_NAME} required`)
             );
-        try {
-            const execSql = ExecSql(connection);
+        try {            
             /** */
             const current = await execSql<T>(
                 `select top 1 * from ${TABLE_NAME} where id = @id`,
                 { id: item.id }
-            ).then(x => x.values[0]);
+            )(connection).then(x => x.values[0]);
             if (!current || !current.id) {
                 return Promise.reject(new Error(`${TABLE_NAME} Not Found`));
             }
@@ -52,14 +51,11 @@ export default function Update<T extends Partial<BasicTable> & { id: string | nu
                 where id = @id
             `,
                 params
-            );
-            if (r.error) {
-                return Promise.reject(r.error);
-            }
+            )(connection);            
             // if(r.affected === ) { return Promise.reject(r.error); }
             // if(r.status === ) { return Promise.reject(r.error); }
             const { id } = item;
-            const result = await execSql<T>(`select top 1 * from ${TABLE_NAME} where id = @id`, { id });
+            const result = await execSql<T>(`select top 1 * from ${TABLE_NAME} where id = @id`, { id })(connection);
             return Promise.resolve(result.values[0]);
         } catch (error) {
             debug(error);

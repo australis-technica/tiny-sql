@@ -1,93 +1,107 @@
 import { debugModule } from "@australis/create-debug";
 import { getParams, TediousParameter } from "@australis/tiny-sql-params";
-import { ColumnMetaData, ColumnValue, Connection, Request, TYPES } from "tedious";
+import { ColumnValue, Connection, Request, TYPES } from "tedious";
 // ...
 const debug = debugModule(module);
-/** */
+
+/** don't return error, it is rejected */
 export type Result<T extends {} & { [key: string]: any }> = {
-  connection: Connection;
-  values?: T[];
-  status?: any;
-  affected: any[];
-  error?: Error;
+  values: T[];
+  rowCount: number;
+  rows: any[];
 };
-export type ExecParams = TediousParameter[] | ({}[]) | {};
+// ...
+export type Params = TediousParameter[] | {};
 /**
  *
  */
-export default function execSql(connection: Connection) {
-  /** */
-  return async <T>(sqlTxt: string, args?: ExecParams) =>
-    new Promise<Result<T>>(async (resolve, reject) => {
-      debug("query: \n" + sqlTxt);
-      const values: T[] = [];
-      let status: any = null;
-      const affected: any[] = [];
+export default <T>(sqlTxt: string, inputParams?: Params) => {
+  debug("query:\n", sqlTxt, inputParams);
+
+  return (connection: Connection) =>
+    // ...
+    new Promise<Result<T>>((resolve, reject) => {
+      let ret: Result<T> = {
+        values: [],
+        rowCount: 0,
+        rows: [],
+      };
 
       const request = new Request(sqlTxt, (error, rowCount, rows) => {
         if (error) {
           return reject(error);
         }
-        debug("request:callback ", error, rowCount, rows && rows.length);
+        ret = {
+          ...ret,
+          rowCount,
+          rows,
+        };
+        if (debug.enabled) {
+          debug("request-callback", ret);
+        }
         request.removeAllListeners();
-        resolve({ values, status, affected, error, connection });
+        resolve(ret);
       });
-
+      /** */
       request.on("row", (columns: ColumnValue[]) => {
         const row: any = {};
-        columns.forEach(column => {
-          row[column.metadata.colName] = column.value;
+        columns.forEach((column, i) => {
+          // if script didnt specify column name use index
+          row[column.metadata.colName || i] = column.value;
         });
-        values.push(row);
+        ret.values.push(row);
       });
-
-      request.on("doneProc", (error: Error, more: boolean, rows: any[]) => {
-        status = {
-          error,
-          more,
-          rows,
-        };
-        debug("doneProc: ", status);
+      // TODO: there isn't input parameters for this
+      request.on("returnValue", (parameterName, value, metadata) => {
+        if (debug.enabled) {
+          const { colName, type } = (metadata || {}) as any;
+          const { name: typeName, id: typeId, out } = (type || {}) as any;
+          debug("return-value: ", {
+            parameterName,
+            value,
+            colName,
+            typeName,
+            typeId,
+            out,
+          });
+        }
+        ret.values.push({ [parameterName || metadata.colName]: value } as T);
       });
-
-      request.on("done", (error: Error, more: boolean, rows: any[]) => {
-        status = {
-          error,
-          more,
-          rows,
-        };
-        debug("done: ", status);
-      });
-
-      request.on(
-        "doneInProc",
-        (error: Error, more: boolean, returnStatus: any, rows: any[]) => {
-          status = {
-            error,
-            more,
-            rows,
-            returnStatus,
-          };
-          debug("doneInProc: ", status);
-        },
-      );
-
-      request.on(
-        "returnValue",
-        (parameterName: string, value: any, _metadata: ColumnMetaData) => {
-          const o: any = {};
-          o[parameterName] = value === TYPES.Null ? null : value;
-          values.push(o);
-        },
-      );
-      const params = getParams(args);
-      if (params && params.length > 0) {
-        for (const p of params) {
-          const { name, type, value, options } = p;
-          request.addParameter(name, type, value, options);
+      //
+      {
+        // convert {} to Parameter
+        const params = inputParams && getParams(inputParams);
+        if (params && params.length > 0) {
+          for (const p of params) {
+            const { name, type, value, length, precision, scale, out } = p;
+            let options = undefined;
+            if (length || precision || scale) {
+              options = {
+                length,
+                precision,
+                scale,
+              };
+            }
+            if (debug.enabled) {
+              const { name: typeName, id: typeId } = (type || {}) as any;
+              debug("param:", {
+                name,
+                typeName,
+                typeId,
+                out: !!out,
+                value,
+                options,
+              });
+            }
+            if (out) {
+              request.addOutputParameter(name, type, value, options);
+            } else {
+              request.addParameter(name, type, value, options);
+            }
+          }
         }
       }
       // execSql:
       connection.execSql(request);
     });
-}
+};

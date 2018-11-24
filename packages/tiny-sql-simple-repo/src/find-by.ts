@@ -1,5 +1,5 @@
 import { Connection } from "tedious";
-import { Exec } from "@australis/tiny-sql-exec-sql";
+import Exec from "@australis/tiny-sql-exec-sql";
 import { debugModule } from "@australis/create-debug";
 const debug = debugModule(module);
 /**
@@ -16,10 +16,7 @@ select * from ${tableName}
     .join(" AND ")};
 /*find-by*/`;
     debug(query);
-    const r = await Exec<T>(query, params)(connection);
-    if (r.error) {
-      return Promise.reject(r.error);
-    }
+    const r = await Exec<T>(query, params)(connection);    
     return Promise.resolve(r.values);
   } catch (error) {
     debug(error);

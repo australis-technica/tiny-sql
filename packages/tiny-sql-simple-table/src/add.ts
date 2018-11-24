@@ -26,7 +26,7 @@ export default function Add<T>(TABLE_NAME: string, byId: (connection: Connection
                     .join(",")}) 
         `;
             debug(sql);
-            await ExecSql(connection)<T>(sql, item);
+            await ExecSql<T>(sql, item)(connection);
             return byId(connection, item.id);
         } catch (error) {
             debug(error);

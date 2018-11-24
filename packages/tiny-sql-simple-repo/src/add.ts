@@ -1,5 +1,5 @@
 import { debugModule } from "@australis/create-debug";
-import { Exec } from "@australis/tiny-sql-exec-sql";
+import Exec from "@australis/tiny-sql-exec-sql";
 import { Connection } from "tedious";
 import byid from "./by-id";
 import { BasicTable } from "./types";
