@@ -1,1 +1,0 @@
-connect to sql engine/server not to database

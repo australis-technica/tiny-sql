@@ -25,7 +25,6 @@ export default function Add<T>(TABLE_NAME: string, byId: (connection: Connection
                     .map(key => `@${key}`)
                     .join(",")}) 
         `;
-            debug(sql);
             await ExecSql<T>(sql, item)(connection);
             return byId(connection, item.id);
         } catch (error) {

@@ -1,4 +1,4 @@
-tiny ms-sql tools
+Tiny mssql/tedious tools
 
 Install:
 
@@ -8,14 +8,14 @@ Install:
 
 Or individual packages
 
-- @australis/tiny-sql-batch-script  
-- @australis/tiny-sql-connect  
-- @australis/tiny-sql-connection-config  
-- @australis/tiny-sql-connection-factory  
-- @australis/tiny-sql-connection-string-parse  
 - @australis/tiny-sql-exec-sql  
 - @australis/tiny-sql-params  
+- @australis/tiny-sql-connection-string-parse  
+- @australis/tiny-sql-connection-config  
+- @australis/tiny-sql-connect  
+- @australis/tiny-sql-use-connection  
 - @australis/tiny-sql-scripts  
+- @australis/tiny-sql-batch-script  
 
 
 Usage:  

@@ -1,5 +1,5 @@
 {
-  "name": "@australis/tiny-sql-connect-to-server",
+  "name": "@australis/tiny-sql-extra",
   "version": "1.0.0-21",
   "description": "",
   "private": false,
@@ -14,9 +14,12 @@
   "author": "daniel@australis-technica.com",
   "license": "MIT",
   "dependencies": {
-    "@australis/create-debug": "^1.0.2"
+    "@australis/tiny-sql-exec-sql": "1.0.0-21",
+    "@australis/tiny-sql-exec-params": "1.0.0-21",
+    "tedious": "^3.0.1"
   },
   "devDependencies": {
+    "@types/tedious": "^2.6.1",
     "jest": "23.6.0",
     "rimraf": "^2.6.2",
     "ts-jest": "23.10.5",

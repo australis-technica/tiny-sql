@@ -7,8 +7,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --ci --env=node",
-    "build": "rimraf lib && tsc -p .",
-    "publishit": "npm publish --access public"
+    "build": "rimraf lib && tsc -p ."    
   },
   "keywords": [],
   "author": "daniel@australis-technica.com",
@@ -16,19 +15,16 @@
   "dependencies": {
     "@australis/tiny-sql-batch-script": "1.0.0-21",
     "@australis/tiny-sql-connect": "1.0.0-21",
-    "@australis/tiny-sql-connect-to-server": "1.0.0-21",
     "@australis/tiny-sql-connection-config": "1.0.0-21",
-    "@australis/tiny-sql-connection-factory": "1.0.0-21",
     "@australis/tiny-sql-connection-string-parse": "1.0.0-21",
-    "@australis/tiny-sql-create-db": "1.0.0-21",
+    "@australis/tiny-sql-extra": "1.0.0-21",
     "@australis/tiny-sql-exec-sql": "1.0.0-21",
     "@australis/tiny-sql-json-table": "1.0.0-21",
     "@australis/tiny-sql-params": "1.0.0-21",
     "@australis/tiny-sql-scripts": "1.0.0-21",
     "@australis/tiny-sql-simple-repo": "1.0.0-21",
     "@australis/tiny-sql-simple-table": "1.0.0-21",
-    "@australis/tiny-sql-use-connection": "1.0.0-21",
-    "@australis/tiny-sql-with-sql-connection": "1.0.0-21"
+    "@australis/tiny-sql-use-connection": "1.0.0-21"
   },
   "devDependencies": {
     "@types/debug": "^0.0.31",

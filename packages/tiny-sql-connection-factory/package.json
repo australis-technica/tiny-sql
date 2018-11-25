@@ -17,7 +17,6 @@
     "tedious": "^3.0.1"
   },
   "devDependencies": {
-    "@australis/load-env": "latest",
     "@types/jest": "^23.3.9",
     "@types/tedious": "^2.6.1",
     "jest": "23.6.0",

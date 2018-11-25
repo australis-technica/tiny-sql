@@ -1,5 +1,3 @@
-process.env.NODE_ENV = "test";
-import "@australis/load-env";
 import { join } from "path";
 import { connected, BasicTable } from "../src";
 import Connect from "../src/connect";
@@ -10,7 +8,7 @@ import Connect from "../src/connect";
  * @param envKey DB name / Env Key
  */
 const dropTable = async (tableName: string, envKey?: string) => {
-  const { Exec } = await import("@australis/tiny-sql-exec-sql");
+  const { default: Exec } = await import("@australis/tiny-sql-exec-sql");
   const { default: using } = await import("@australis/tiny-sql-use-connection");
   return using(Connect(envKey))(Exec(`drop table [${tableName}]`));
 };
@@ -38,6 +36,7 @@ const repo = (envKey?: string) => {
       updatedAt DATETIME NOT NULL default GETDATE(),
     );
   `,
+      envKey,
     ),
     envKey,
   };
@@ -47,15 +46,16 @@ const repo = (envKey?: string) => {
  *
  */
 describe(require(join(__dirname, "../package.json")).name, function() {
-  
   jest.setTimeout(100000);
 
   it("works", async () => {
     /**
      *
      */
-    const { init, add, all, update, findBy, remove, tableName } = repo();
-    await dropTable(tableName);
+    const { init, add, all, update, findBy, remove, tableName } = repo(
+      "TINY_SQL_TEST_DB",
+    );
+    await dropTable(tableName, "TINY_SQL_TEST_DB");
     let ok = await init();
     expect(ok).toBe(true);
     //  try again ... if not exists

@@ -16,7 +16,7 @@ export type Params = TediousParameter[] | {};
  *
  */
 export default <T>(sqlTxt: string, inputParams?: Params) => {
-  debug("query:\n", sqlTxt, inputParams);
+  debug("query:\n%s,", sqlTxt, inputParams);
 
   return (connection: Connection) =>
     // ...

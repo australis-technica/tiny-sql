@@ -1,1 +1,1 @@
-utility to read scripts from known common location
+Builds/flattens/includes all packages into one meta-package
