@@ -1,9 +1,9 @@
+import Clear from "@australis/tiny-sql-extra/lib/clear-table";
+import Drop from "@australis/tiny-sql-extra/lib/drop-table";
+import All from "@australis/tiny-sql-extra/lib/select-star";
+import exists from "@australis/tiny-sql-extra/lib/table-exists";
 import Add from "./add";
-import All from "./all";
 import byid from "./by-id";
-import Clear from "./clear";
-import Drop from "./drop";
-import Exists from "./exists";
 import FindBy from "./find-by";
 import Init from "./init";
 import Remove from "./remove";
@@ -21,7 +21,6 @@ export default function SimpleRepo<T extends BasicTable>(
     const byId = byid<T>(tabelName);
     const add = Add<T>(tabelName);
     const remove = Remove(tabelName);
-    const exists = Exists(tabelName);
     const init = Init(tabelName, setupScript);
     const findBy = FindBy<T>(tabelName);
     const update = Update<T>(tabelName);
@@ -31,7 +30,7 @@ export default function SimpleRepo<T extends BasicTable>(
         add,
         all,
         byId,
-        exists,
+        exists: exists(tabelName),
         findBy,
         init,
         update,

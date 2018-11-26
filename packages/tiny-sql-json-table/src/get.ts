@@ -1,19 +1,11 @@
 import Exec from "@australis/tiny-sql-exec-sql";
 import { Connection } from "tedious";
 import { KeyValue } from "./types";
-import { debugModule } from "@australis/create-debug";
-const debug = debugModule(module);
+
+const reduce: (x: { values: KeyValue[] }) => any = ({ values }) => 
+  values && values[0] && values[0].value && JSON.parse(values[0].value || undefined)
 /** */
-const get = (tableName: string) =>
-  (key: string)=>
-    async (connection: Connection) => {
-      try {
-        return Exec<KeyValue>(`select top 1 [key], [value] from ${tableName} where [key] = @key`, { key })(connection)
-          .then(({ values }) => values && values[0] && JSON.parse(values[0].value || undefined ))
-      } catch (error) {
-        debug(error);
-        return Promise.reject(error);
-      }
-    };
-/** */
-export default get;
+export default (tableName: string) =>
+  (key: string) =>
+    (connection: Connection) => Exec<KeyValue>(`select top 1 [key], [value] from [${tableName}] where [key] = @key`, { key })(connection)
+      .then(reduce);

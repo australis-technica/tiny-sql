@@ -1,7 +1,7 @@
 import { Connection } from "tedious";
 import Exec from "@australis/tiny-sql-exec-sql";
 import { debugModule } from "@australis/create-debug";
-import exists from "./exists";
+import exists from "@australis/tiny-sql-extra/lib/table-exists";
 
 const debug = debugModule(module);
 /**
@@ -14,7 +14,7 @@ export default (tableName: string, tableCreationScript: string) => () => async (
 ): Promise<boolean> => {
   try {
     // ...
-    if (!(await exists(tableName)(/*args*/)(connection))) {
+    if (!(await exists(tableName)(connection))) {
       await Exec(tableCreationScript)(connection);
     }
     return Exec<{ ok: number }>(

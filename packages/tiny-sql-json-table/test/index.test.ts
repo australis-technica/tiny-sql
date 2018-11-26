@@ -1,43 +1,18 @@
-import _connect, { useConnection as using} from "@australis/tiny-sql-connect";
-import getConfig from "@australis/tiny-sql-connection-config";
-import execSql from "@australis/tiny-sql-exec-sql";
+import _connect, { useConnection as using } from "@australis/tiny-sql-connect";
 import { connected as JsonTable } from "../src";
-import { TYPES, Connection } from "tedious";
-import { TediousParameter } from "@australis/tiny-sql-params";
-
-const TABLE_NAME = "kv";
-const kv = JsonTable(TABLE_NAME, "TINY_SQL_TEST_DB");
-
-const connect = () => _connect(getConfig("TINY_SQL_TEST_DB"));
-
-const tableExists = (tableName: string) => (connection: Connection) =>
-  execSql<{ exists: boolean }>(
-    "select @exists=(case when (exists (select name from sys.tables where name = @tableName)) then 1 else 0 end)",
-    [
-      {
-        tableName,
-      },
-      {
-        name: "exists",
-        type: TYPES.Bit,
-        out: true,
-        value: undefined,
-      } as TediousParameter,
-    ],
-  )(connection).then(({ values }) => values[0].exists);
+const kv = JsonTable("kv", "TINY_SQL_TEST_DB");
 
 beforeAll(async () => {
-  await kv.drop();
-  expect(await using(connect)(tableExists(kv.tableName))).toBe(false);
+
 });
 
 describe("Json Table", () => {
-  it("inits", async () => {
-    await kv.init();
-    expect(await using(connect)(tableExists(kv.tableName))).toBe(true);
-  });
 
-  it("sets defaults", async () => {
+  it("works", async () => {
+    await kv.drop();
+    expect(await kv.exists()).toBe(false);
+    await kv.init();
+    expect(await kv.exists()).toBe(true);
     const defaults = { x: "x", y: 1, z: [1] };
     await kv.defaults(defaults);
     // Try Override
@@ -46,17 +21,22 @@ describe("Json Table", () => {
     expect(await kv.get("x")).toBe(defaults.x);
     expect(await kv.get("y")).toBe(defaults.y);
     expect(await kv.get("z")).toMatchObject(defaults.z);
-  });
+    expect(await kv.count()).toBe(3);
 
-  it("get/set/remove", async () => {
-    expect(await kv.exists("zzz")).toBe(false);
+    await kv.clear();
+    expect(await kv.count()).toBe(0);
+
+    expect(await kv.keyExists("zzz")).toBe(false);
     await kv.set("zzz", "z");
+    expect(await kv.count()).toBe(1);
+    expect(await kv.keyExists("zzz")).toBe(true);
     expect(await kv.get("zzz")).toBe("z");
     await kv.clear();
     expect(await kv.count()).toBe(0);
     await kv.set("zzz", "z");
     expect(await kv.get("zzz")).toBe("z");
-    await kv.remove("zzz");
+    const r = await kv.remove("zzz");
     expect(await kv.get("zzz")).toBe(undefined);
+    expect(r.values.length).toBe(0);
   });
 });
