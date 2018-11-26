@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "@australis/tiny-sql-exec-sql": "1.0.0-21",
-    "@australis/tiny-sql-exec-params": "1.0.0-21",
+    "@australis/tiny-sql-params": "1.0.0-21",
     "tedious": "^3.0.1"
   },
   "devDependencies": {
