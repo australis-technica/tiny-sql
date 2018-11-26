@@ -1,1 +1,0 @@
-utility to read scripts from known common location

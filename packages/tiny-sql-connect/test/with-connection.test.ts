@@ -1,11 +1,10 @@
-import { join } from "path";
 import connect from "@australis/tiny-sql-connect/lib/connect-to-server";
 import execSql from "@australis/tiny-sql-exec-sql";
 import withConnection from "../src/with-connection";
 /**
  * ?
  */
-describe(require(join(__dirname, "../package.json")).name, () => {
+describe("with-connection", () => {
   /**
    *
    */

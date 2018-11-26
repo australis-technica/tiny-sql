@@ -1,7 +1,6 @@
 import { join } from "path";
-import _connect from "@australis/tiny-sql-connect";
+import _connect, { useConnection as using} from "@australis/tiny-sql-connect";
 import getConfig from "@australis/tiny-sql-connection-config";
-import using from "@australis/tiny-sql-use-connection";
 import execSql from "@australis/tiny-sql-exec-sql";
 
 const connect = () => _connect(getConfig("TINY_SQL_TEST_DB"));
@@ -32,3 +31,5 @@ describe(pkg.name, async () => {
     expect(await using(connect)(tableExists(tableName))).toBe(true);
   });
 });
+
+

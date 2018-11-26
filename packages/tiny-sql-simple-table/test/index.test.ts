@@ -1,7 +1,5 @@
-import _connect from "@australis/tiny-sql-connect";
+import _connect, { useConnection as using} from "@australis/tiny-sql-connect";
 import getConfig from "@australis/tiny-sql-connection-config";
-import ExecSql from "@australis/tiny-sql-exec-sql";
-import using from "@australis/tiny-sql-use-connection";
 import { join } from "path";
 import SimpleTable, { BasicTable } from "../src";
 const DB = "TINY_SQL_TEST_DB";

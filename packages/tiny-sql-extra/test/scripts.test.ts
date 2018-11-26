@@ -3,7 +3,7 @@ import { join } from "path";
 /** */
 describe("scripts", () => {
   it("works", async () => {
-    const Scripts = (await import("../src")).default;
+    const Scripts = (await import("../src/scripts")).default;
     const {
       getScript,
       getScriptPartsSync,

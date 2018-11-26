@@ -1,9 +1,8 @@
 import execSql from "@australis/tiny-sql-exec-sql";
 import connectToServer from "../src/connect-to-server";
-import { join } from "path";
 import { Connection } from "tedious";
 
-describe((require(join(__dirname, "../package.json"))).name, () => {
+describe("connect-to-server", () => {
     it("works", async () => {
         let connection: Connection;
         try {

@@ -1,7 +1,6 @@
 import ExecSql from "../src";
-import connect from "@australis/tiny-sql-connect";
+import connect, { useConnection as using} from "@australis/tiny-sql-connect";
 import getConfig from "@australis/tiny-sql-connection-config";
-import using from "@australis/tiny-sql-use-connection";
 import { TediousParameter } from "@australis/tiny-sql-params";
 import { TYPES } from "tedious";
 

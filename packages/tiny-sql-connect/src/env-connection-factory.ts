@@ -1,4 +1,4 @@
-import connect from "@australis/tiny-sql-connect";
+import connect from "./connect";
 import connectionConfig from "@australis/tiny-sql-connection-config";
 import { Connection } from "tedious";
 /**

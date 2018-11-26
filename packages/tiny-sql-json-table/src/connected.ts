@@ -6,7 +6,7 @@ import exists from "./exists";
 import remove from "./remove";
 import clear from "./clear";
 import connect from "./connect";
-import using from "@australis/tiny-sql-use-connection";
+import { useConnection as using } from "@australis/tiny-sql-connect";
 import count from "./count";
 import drop from "./drop";
 /** */

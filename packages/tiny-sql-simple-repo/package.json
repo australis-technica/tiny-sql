@@ -18,7 +18,6 @@
     "@australis/tiny-sql-exec-sql": "1.0.0-21",
     "@australis/tiny-sql-params": "1.0.0-21",
     "@australis/tiny-sql-connection-config": "1.0.0-21",
-    "@australis/tiny-sql-use-connection": "1.0.0-21",
     "@australis/tiny-sql-connect": "1.0.0-21",    
     "@types/node": "^10.12.8",
     "tedious": "^3.0.1"

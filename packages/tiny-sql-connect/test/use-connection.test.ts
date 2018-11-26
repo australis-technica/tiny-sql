@@ -1,7 +1,6 @@
-import { join } from "path";
-import connect from "@australis/tiny-sql-connect/lib/connect-to-server";
 import execSql from "@australis/tiny-sql-exec-sql";
-import useConnection from "../src";
+import useConnection from "../src/use-connection";
+import connect from "../src/connect-to-server";
 /** */
 const getValue = x => connection =>
   execSql<{ x: any }>("select x=@x", { x })(connection).then(
@@ -10,10 +9,7 @@ const getValue = x => connection =>
 /**
  * ?
  */
-describe(require(join(__dirname, "../package.json")).name, () => {
-  /**
-   *
-   */
+describe("use-connection", () => {
   it("works", async () => {
     const value = await useConnection(() => connect("TINY_SQL_TEST_DB"))(
       getValue(1),

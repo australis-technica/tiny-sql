@@ -9,7 +9,7 @@ import Connect from "../src/connect";
  */
 const dropTable = async (tableName: string, envKey?: string) => {
   const { default: Exec } = await import("@australis/tiny-sql-exec-sql");
-  const { default: using } = await import("@australis/tiny-sql-use-connection");
+  const { useConnection: using } = await import("@australis/tiny-sql-connect");
   return using(Connect(envKey))(Exec(`drop table [${tableName}]`));
 };
 /**

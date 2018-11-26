@@ -13,3 +13,4 @@ yarn.lock
 *.prod.env
 *.test.env
 *.log
+*.sql

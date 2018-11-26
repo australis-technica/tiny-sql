@@ -1,7 +1,6 @@
-import _connect from "@australis/tiny-sql-connect";
+import _connect, { useConnection as using} from "@australis/tiny-sql-connect";
 import getConfig from "@australis/tiny-sql-connection-config";
 import execSql from "@australis/tiny-sql-exec-sql";
-import using from "@australis/tiny-sql-use-connection";
 import { connected as JsonTable } from "../src";
 import { TYPES, Connection } from "tedious";
 import { TediousParameter } from "@australis/tiny-sql-params";
