@@ -15,13 +15,9 @@
   "dependencies": {
     "@australis/tiny-sql-connect": "1.0.0-21",
     "@australis/tiny-sql-connection-config": "1.0.0-21",
-    "@australis/tiny-sql-connection-string-parse": "1.0.0-21",
-    "@australis/tiny-sql-extra": "1.0.0-21",
-    "@australis/tiny-sql-exec-sql": "1.0.0-21",
-    "@australis/tiny-sql-json-table": "1.0.0-21",
-    "@australis/tiny-sql-params": "1.0.0-21",
-    "@australis/tiny-sql-simple-repo": "1.0.0-21",
-    "@australis/tiny-sql-simple-table": "1.0.0-21"    
+    "@australis/tiny-sql-connection-string-parse": "1.0.0-21",    
+    "@australis/tiny-sql-exec-sql": "1.0.0-21",    
+    "@australis/tiny-sql-params": "1.0.0-21"  
   },
   "devDependencies": {
     "@types/debug": "^0.0.31",
