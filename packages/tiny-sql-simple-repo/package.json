@@ -19,10 +19,10 @@
     "@australis/tiny-sql-params": "1.0.0-21",
     "@australis/tiny-sql-connection-config": "1.0.0-21",
     "@australis/tiny-sql-connect": "1.0.0-21",    
-    "@types/node": "^10.12.8",
     "tedious": "^3.0.1"
   },
   "devDependencies": {
+    "@types/node": "^10.12.8",
     "@types/jest": "^23.3.9",
     "@types/tedious": "^2.6.1",
     "jest": "23.6.0",

@@ -10,17 +10,17 @@ import { BasicTable } from "./types";
 /**
  *
  * @param tabelName @type {string} @description table name
-  * @param tableCreationScript @type {string} @description "table creation script"
+  * @param setupScript @type {string} 
  */
 export default function SimpleRepo<T extends BasicTable>(
     tabelName: string,
-    tableCreationScript: string
+    setupScript: string
 ) {
     const byId = byid<T>(tabelName);
     const add = Add<T>(tabelName);
     const remove = Remove(tabelName);
     const exists = Exists(tabelName);
-    const init = Init(tabelName, tableCreationScript);
+    const init = Init(tabelName, setupScript);
     const findBy = FindBy<T>(tabelName);
     const update = Update<T>(tabelName);
     const all = All<T>(tabelName);
