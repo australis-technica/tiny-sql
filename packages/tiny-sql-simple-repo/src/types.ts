@@ -1,6 +1,6 @@
 
 /**
- *
+ * TODO: remove this constrain
  */
 export interface BasicTable {
     id: string | number;
