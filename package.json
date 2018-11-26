@@ -27,9 +27,7 @@
     "packages/tiny-sql-connection-string-parse",
     "packages/tiny-sql-connection-config",
     "packages/tiny-sql-extra",
-    "packages/tiny-sql-simple-table",
     "packages/tiny-sql-simple-repo",
-    "packages/tiny-sql-json-table",
     "packages/tiny-sql"
   ],
   "engines": {

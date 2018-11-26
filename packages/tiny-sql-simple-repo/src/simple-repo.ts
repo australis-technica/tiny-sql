@@ -6,7 +6,9 @@ import Exists from "./exists";
 import FindBy from "./find-by";
 import Update from "./update";
 import All from "./all";
+import Drop from "./drop";
 import { BasicTable } from "./types";
+import Clear from "./clear";
 /**
  *
  * @param tabelName @type {string} @description table name
@@ -33,6 +35,8 @@ export default function SimpleRepo<T extends BasicTable>(
         findBy,
         init,
         update,
-        remove
+        remove,
+        drop: Drop(tabelName),
+        clear: Clear(tabelName)
     };
 };

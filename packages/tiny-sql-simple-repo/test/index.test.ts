@@ -1,17 +1,5 @@
 import { join } from "path";
 import { connected, BasicTable } from "../src";
-import Connect from "../src/connect";
-
-/**
- *
- * @param tableName
- * @param envKey DB name / Env Key
- */
-const dropTable = async (tableName: string, envKey?: string) => {
-  const { default: Exec } = await import("@australis/tiny-sql-exec-sql");
-  const { useConnection: using } = await import("@australis/tiny-sql-connect");
-  return using(Connect(envKey))(Exec(`drop table [${tableName}]`));
-};
 /**
  *
  */
@@ -52,12 +40,18 @@ describe(require(join(__dirname, "../package.json")).name, function() {
     /**
      *
      */
-    const { init, add, all, update, findBy, remove, tableName } = repo(
+    const { init, add, all, update, findBy, remove, drop, clear, exists } = repo(
       "TINY_SQL_TEST_DB",
     );
-    await dropTable(tableName, "TINY_SQL_TEST_DB");
+    // TODO:
+    expect(typeof clear).toBe("function");
+    
+    await drop();
+    expect(await exists()).toBe(false);
     let ok = await init();
     expect(ok).toBe(true);
+    // 
+    expect(await exists()).toBe(true);
     //  try again ... if not exists
     ok = await init();
     expect(ok).toBe(true);
