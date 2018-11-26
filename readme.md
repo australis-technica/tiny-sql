@@ -13,7 +13,6 @@ Or individual packages
 - @australis/tiny-sql-connection-string-parse  
 - @australis/tiny-sql-connection-config  
 - @australis/tiny-sql-connect  
-- @australis/tiny-sql-scripts  
 - @australis/tiny-sql-extra  
 
 
