@@ -2,10 +2,6 @@ import _connect, { useConnection as using } from "@australis/tiny-sql-connect";
 import { connected as JsonTable } from "../src";
 const kv = JsonTable("kv", "TINY_SQL_TEST_DB");
 
-beforeAll(async () => {
-
-});
-
 describe("Json Table", () => {
 
   it("works", async () => {
