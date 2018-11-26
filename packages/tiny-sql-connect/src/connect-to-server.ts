@@ -1,11 +1,9 @@
-import connect from "./connect";
-import { Connection, ConnectionOptions } from "tedious";
-import sqlConnectionConfig from "@australis/tiny-sql-connection-config";
+import { ConnectionConfig, ConnectionOptions } from "tedious";
 /**
  * connect to server, not db
  */
-export default (envKey = "DB"): Promise<Connection> => {
-  const { options, ...engineConfig } = sqlConnectionConfig(envKey);
-  const { database, ...o } = (options|| {}) as ConnectionOptions;
-  return connect({ ...engineConfig, options: o });
+export default (config: ConnectionConfig): ConnectionConfig => {
+  const { options, ...engineConfig } = config;
+  const { database, ...o } = (options || {}) as ConnectionOptions;
+  return { ...engineConfig, options: o };
 };

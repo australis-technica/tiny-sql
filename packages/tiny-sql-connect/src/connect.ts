@@ -1,3 +1,9 @@
 import { Connection, ConnectionConfig } from "tedious";
-import factory from "./connect-factory";
-export default (args: ConnectionConfig | Connection) => factory(args)();
+import isConnection from "./is-connection";
+import toPromise from "./to-promise";
+/**
+ * Connect to config
+ */
+const connect = (args: ConnectionConfig | Connection) => toPromise(isConnection(args) ? args : new Connection(args));
+export default connect;
+

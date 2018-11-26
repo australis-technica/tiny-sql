@@ -7,6 +7,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --ci --env=node",
+    "test-debug": "node --inspect-brk  ../../node_modules/jest/bin/jest.js --runInBand --no-cache --env=node --ci",
     "build": "rimraf lib && tsc -p .",
     "publishit": "npm publish --access public"
   },

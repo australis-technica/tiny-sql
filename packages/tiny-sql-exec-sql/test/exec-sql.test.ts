@@ -1,11 +1,11 @@
 import ExecSql from "../src";
-import connect, { useConnection as using} from "@australis/tiny-sql-connect";
+import connect, { useConnection as using } from "@australis/tiny-sql-connect";
 import getConfig from "@australis/tiny-sql-connection-config";
 import { TediousParameter } from "@australis/tiny-sql-params";
 import { TYPES } from "tedious";
 
-const exec = (sql: string, params?: any) =>
-  using(() => connect(getConfig("TINY_SQL_TEST_DB")))(ExecSql(sql, params));
+const exec = <T>(sql: string, params?: any) => using(connect(getConfig("TINY_SQL_TEST_DB")))(ExecSql<T>(sql, params));
+
 /**
  * Create stored proc
  */
@@ -25,36 +25,26 @@ beforeAll(async () => {
 
 /** */
 it("execs with connection", async () => {
-  const { values } = await using(() => connect(getConfig("TINY_SQL_TEST_DB")))(
-    ExecSql<{ name: string }>("select 'x' as name"),
-  );
+  const { values } = await exec<{ name: string }>("select 'x' as name");
   expect(values[0].name).toBe("x");
 });
 /** */
 it("execs with params", async () => {
-  const { values } = await using(() => connect(getConfig("TINY_SQL_TEST_DB")))(
-    ExecSql<{ name: string }>("select @name as name", { name: "me" }),
-  );
+  const { values } = await exec<{ name: string }>("select @name as name", { name: "me" });
   expect(values[0].name).toBe("me");
 });
 
 it("execs procs", async () => {
-  const { values } = await using(() => connect(getConfig("TINY_SQL_TEST_DB")))(
-    ExecSql<any>("exec tiny_echo @what", { what: "hello" }),
-  );
+  const { values } = await exec<any>("exec tiny_echo @what", { what: "hello" });
   // proc doesn't declare a column name
   // index is used instead
   expect(values[0][0]).toBe("hello");
 });
 
 it("execs output params", async () => {
-  const { values } = await using(() => connect(getConfig("TINY_SQL_TEST_DB")))(
-    ExecSql<any>(
-      `
-    select @x = count(*) from sys.databases where name = 'master'      
-    `,      
-      [{ name: "x", type: TYPES.Int, out: true } as TediousParameter],
-    ),
+  const { values } = await exec<any>(
+    `select @x = count(*) from sys.databases where name = 'master'`,
+    [{ name: "x", type: TYPES.Int, out: true } as TediousParameter]
   );
   expect(values[0].x).toBe(1);
 });
@@ -77,19 +67,15 @@ it("execs output params", async () => {
  * Fails why is value truncated ?
  */
 it("execs output params (varchar?)", async () => {
-  const { values } = await using(() => connect(getConfig("TINY_SQL_TEST_DB")))(
-    ExecSql<any>(
-      `
-      select @xname = [name] from sys.databases where name = 'master';
-    `,
-      {
-        name: "xname",
-        type: TYPES.VarChar,
-        length: 1024,
-        value: "",
-        out: true
-      } as TediousParameter,
-    ),
+  const { values } = await exec<any>(
+    `select @xname = [name] from sys.databases where name = 'master';`,
+    {
+      name: "xname",
+      type: TYPES.VarChar,
+      length: 1024,
+      value: "",
+      out: true
+    } as TediousParameter,
   );
   expect(values[0].xname).toBe("master");
 });

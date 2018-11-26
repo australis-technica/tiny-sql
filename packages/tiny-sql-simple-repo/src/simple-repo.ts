@@ -1,14 +1,14 @@
-import byid from "./by-id";
-import Remove from "./remove";
-import Init from "./init";
 import Add from "./add";
+import All from "./all";
+import byid from "./by-id";
+import Clear from "./clear";
+import Drop from "./drop";
 import Exists from "./exists";
 import FindBy from "./find-by";
-import Update from "./update";
-import All from "./all";
-import Drop from "./drop";
+import Init from "./init";
+import Remove from "./remove";
 import { BasicTable } from "./types";
-import Clear from "./clear";
+import Update from "./update";
 /**
  *
  * @param tabelName @type {string} @description table name

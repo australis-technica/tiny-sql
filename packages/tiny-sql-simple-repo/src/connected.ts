@@ -5,6 +5,7 @@ import simpleRepo from "./simple-repo";
 import { BasicTable } from "./types";
 /** */
 export default <T extends BasicTable>(tableName: string, setupScript: string, envKey?: string) => {
+
     const {
         add,
         all,

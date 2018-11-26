@@ -6,6 +6,7 @@ import init from "./init";
 import remove from "./remove";
 import set from "./set";
 import count from "./count";
+import drop from "./drop";
 /** */
 export default (tableName: string) => ({
     tableName,
@@ -16,5 +17,6 @@ export default (tableName: string) => ({
     set: set(tableName),
     remove:remove(tableName),
     clear: clear(tableName),
-    count: count(tableName)
+    count: count(tableName),
+    drop: drop(tableName)
 });
