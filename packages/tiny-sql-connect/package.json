@@ -19,6 +19,7 @@
   "author": "daniel@australis-technica.com",
   "license": "MIT",
   "dependencies": {
+    "@australis/create-debug": "^1.0.2",
     "tedious": "^3.0.1"
   },
   "devDependencies": {
