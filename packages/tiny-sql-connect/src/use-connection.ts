@@ -5,6 +5,7 @@ import unwrap, { Connectable } from "./unwrap";
 const debug = debugModule(module);
 
 type Callback<T> = (connection: Connection) => Promise<T>;
+
 /**
  * close connection from Connectable  after use,\
  */
