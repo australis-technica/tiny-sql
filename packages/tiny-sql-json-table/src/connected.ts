@@ -1,5 +1,5 @@
 import connect from "@australis/tiny-sql-extra/lib/connect-to-env";
-import { useConnection as using } from "@australis/tiny-sql-connect";
+import { using } from "@australis/tiny-sql-connect";
 import Repo from "./repo";
 /** */
 export default (tableName: string, envKey = "DB") => {

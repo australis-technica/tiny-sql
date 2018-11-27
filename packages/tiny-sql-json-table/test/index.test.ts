@@ -1,4 +1,4 @@
-import _connect, { useConnection as using } from "@australis/tiny-sql-connect";
+import _connect, { using } from "@australis/tiny-sql-connect";
 import { connected as JsonTable } from "../src";
 const kv = JsonTable("kv", "TINY_SQL_TEST_DB");
 

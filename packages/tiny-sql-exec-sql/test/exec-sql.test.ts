@@ -1,10 +1,11 @@
-import ExecSql from "../src";
-import connect, { useConnection as using } from "@australis/tiny-sql-connect";
+import execSql from "../src";
+import connect, { using } from "@australis/tiny-sql-connect";
 import getConfig from "@australis/tiny-sql-connection-config";
 import { TediousParameter } from "@australis/tiny-sql-params";
 import { TYPES } from "tedious";
 
-const exec = <T>(sql: string, params?: any) => using(connect(getConfig("TINY_SQL_TEST_DB")))(ExecSql<T>(sql, params));
+const exec = <T>(sql: string, params?: any) =>
+  using(connect(getConfig("TINY_SQL_TEST_DB")))(execSql<T>(sql, params));
 
 /**
  * Create stored proc
@@ -30,7 +31,9 @@ it("execs with connection", async () => {
 });
 /** */
 it("execs with params", async () => {
-  const { values } = await exec<{ name: string }>("select @name as name", { name: "me" });
+  const { values } = await exec<{ name: string }>("select @name as name", {
+    name: "me",
+  });
   expect(values[0].name).toBe("me");
 });
 
@@ -44,7 +47,7 @@ it("execs procs", async () => {
 it("execs output params", async () => {
   const { values } = await exec<any>(
     `select @x = count(*) from sys.databases where name = 'master'`,
-    [{ name: "x", type: TYPES.Int, out: true } as TediousParameter]
+    [{ name: "x", type: TYPES.Int, out: true } as TediousParameter],
   );
   expect(values[0].x).toBe(1);
 });
@@ -74,8 +77,9 @@ it("execs output params (varchar?)", async () => {
       type: TYPES.VarChar,
       length: 1024,
       value: "",
-      out: true
+      out: true,
     } as TediousParameter,
   );
   expect(values[0].xname).toBe("master");
 });
+

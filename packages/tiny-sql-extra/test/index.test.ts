@@ -1,5 +1,5 @@
 import { join } from "path";
-import _connect, { useConnection as using} from "@australis/tiny-sql-connect";
+import _connect, { using} from "@australis/tiny-sql-connect";
 import getConfig from "@australis/tiny-sql-connection-config";
 import execSql from "@australis/tiny-sql-exec-sql";
 

@@ -3,7 +3,4 @@ import toPromise from "./to-promise";
 /**
  * Create connection factory, always *new*
  */
-export default function connectFactory(args: ConnectionConfig) {    
-  /** */
-  return () => toPromise(new Connection(args));
-}
+export default (args: ConnectionConfig) =>  () => toPromise(new Connection(args))

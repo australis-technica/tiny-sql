@@ -1,4 +1,4 @@
-import _connect, { useConnection as using } from "@australis/tiny-sql-connect";
+import _connect, { using } from "@australis/tiny-sql-connect";
 import connectionConfig from "@australis/tiny-sql-connection-config";
 import simpleRepo from "./simple-repo";
 import { BasicTable } from "./types";

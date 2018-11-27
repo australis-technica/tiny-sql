@@ -1,4 +1,4 @@
-import _connect, { useConnection as using} from "@australis/tiny-sql-connect";
+import _connect, { using} from "@australis/tiny-sql-connect";
 import getConfig from "@australis/tiny-sql-connection-config";
 const connect = () => _connect(getConfig("TINY_SQL_TEST_DB"));
 
