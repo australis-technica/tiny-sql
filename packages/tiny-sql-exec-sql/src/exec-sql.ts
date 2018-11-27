@@ -51,7 +51,7 @@ export default <T>(sqlTxt: string, inputParams?: Params) => {
         });
         ret.values.push(row);
       });
-      // TODO: there isn't input parameters for this
+      // 
       request.on("returnValue", (parameterName, value, metadata) => {
         if (debug.enabled) {
           const { colName, type } = (metadata || {}) as any;
