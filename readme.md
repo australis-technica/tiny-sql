@@ -1,4 +1,4 @@
-Tiny mssql/tedious tools
+# Tiny mssql/tedious tools
 
 Install:
 
@@ -8,21 +8,17 @@ Install:
 
 Or individual packages
 
+- @australis/tiny-sql-connect  
+- @australis/tiny-sql-connection-config  
+- @australis/tiny-sql-connection-string-parse  
 - @australis/tiny-sql-exec-sql  
 - @australis/tiny-sql-params  
-- @australis/tiny-sql-connection-string-parse  
-- @australis/tiny-sql-connection-config  
-- @australis/tiny-sql-connect  
-- @australis/tiny-sql-extra  
 
+And extras
+
+- @australis/tiny-sql-extra
 
 Usage:  
 see tests
 
-Scripts:
-
-set-version:  
-| sets packages/**/packkage.json#version from root package.json#version,  
-
-set-private:  
-| sets ./package.json#private=value where value true|false
+Build, test, ...etc, see ./scripts:
