@@ -1,6 +1,6 @@
 import { Connection } from "tedious";
 
-export const begin = (connection: Connection) =>
+const begin = (connection: Connection) =>
   new Promise((resolve, reject) =>
     connection.beginTransaction(error => {
       if (error) reject(error);
@@ -8,7 +8,7 @@ export const begin = (connection: Connection) =>
     }),
   );
   
-export const commit = (connection: Connection) =>
+const commit = (connection: Connection) =>
   new Promise((resolve, reject) =>
     connection.commitTransaction(error => {
       if (error) reject(error);
@@ -16,10 +16,16 @@ export const commit = (connection: Connection) =>
     }),
   );
 
-export const rollback = (connection: Connection) =>
+const rollback = (connection: Connection) =>
   new Promise((resolve, reject) =>
     connection.rollbackTransaction(error => {
       if (error) reject(error);
       else resolve();
     }),
   );
+  
+export default {
+  begin,
+  commit,
+  rollback
+}

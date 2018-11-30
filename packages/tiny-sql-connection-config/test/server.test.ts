@@ -1,4 +1,4 @@
-import toServer from "../src/connect-to-server";
+import toServer from "../src/to-server";
 /** */
 describe("connect-to-server", () => {
     it("works", async () => {
