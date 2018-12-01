@@ -14,19 +14,20 @@ const repo = (envKey?: string) => {
     tableName,
     ...connected<Xyz>(
       tableName,
-      `
+      [
+        `
+    if not exists(select [name] from sys.tables where name = 'Xyz')
     create table Xyz(
       id varchar(1024) NOT NULL UNIQUE default NEWID(),
       displayName varchar(max) NOT NULL,
       enabled bit not null default 0,
-      nullable bit,
       createdAt DATETIME NOT NULL default GETDATE(),
       updatedAt DATETIME NOT NULL default GETDATE(),
     );
   `,
+      ],
       envKey,
     ),
-    envKey,
   };
 };
 
@@ -40,22 +41,28 @@ describe(require(join(__dirname, "../package.json")).name, function() {
     /**
      *
      */
-    const { init, add, all, update, findBy, remove, drop, clear, exists } = repo(
-      "TINY_SQL_TEST_DB",
-    );
+    const {
+      init,
+      add,
+      all,
+      update,
+      findBy,
+      remove,
+      drop,
+      clear,
+      exists,
+    } = repo("TINY_SQL_TEST_DB");
     // TODO:
     expect(typeof clear).toBe("function");
-    
+
     await drop();
     expect(await exists()).toBe(false);
-    let ok = await init();
-    expect(ok).toBe(true);
-    // 
+    await init();
+    //
     expect(await exists()).toBe(true);
     //  try again ... if not exists
-    ok = await init();
-    expect(ok).toBe(true);
-
+    await init();
+    //
     const _new = await add({ id: "x", displayName: "x" });
     const { id, displayName, enabled, createdAt, updatedAt } = _new;
     expect(id).toBe("x");
@@ -84,10 +91,8 @@ describe(require(join(__dirname, "../package.json")).name, function() {
     const _all = await all();
     expect(_all[0].id).toBe("x");
     // UPDATE
-    {
-      const y = await update({ id: "x", displayName: "y" });
-      expect(y.displayName).toBe("y");
-    }
+    const y = await update({ id: "x", displayName: "y" });
+    expect(y.displayName).toBe("y");
     // FIND-BY
     const values = await findBy({ displayName: "y" });
     // TODO:

@@ -1,7 +1,6 @@
-import { Connection } from "tedious";
-import Exec from "@australis/tiny-sql-exec-sql";
 import { debugModule } from "@australis/create-debug";
-import exists from "@australis/tiny-sql-extra/lib/table-exists";
+import Exec from "@australis/tiny-sql-exec-sql";
+import { Connection } from "tedious";
 
 const debug = debugModule(module);
 /**
@@ -20,13 +19,7 @@ export default (tableName: string, scripts: string | string[]) => () => async (
       return;
     }
     // ...
-    if (!(await exists(tableName)(connection))) {
-      await Exec(scripts)(connection);
-    }
-    // TODO: remove it
-    return Exec<{ ok: number }>(
-      `select ok=1 from sys.tables where name = '${tableName}'`,
-    )(connection).then(x => x.values[0]["ok"] === 1);
+    await Exec(scripts)(connection);
   } catch (error) {
     debug(error);
     return Promise.reject(error);

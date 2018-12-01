@@ -12,16 +12,16 @@ import Update from "./update";
 /**
  *
  * @param tabelName @type {string} @description table name
-  * @param setupScript @type {string} 
+  * @param scripts @type {string} 
  */
 export default function SimpleRepo<T extends BasicTable>(
     tabelName: string,
-    setupScript: string
+    scripts: string|string[]
 ) {
     const byId = byid<T>(tabelName);
     const add = Add<T>(tabelName);
     const remove = Remove(tabelName);
-    const init = Init(tabelName, setupScript);
+    const init = Init(tabelName, scripts);
     const findBy = FindBy<T>(tabelName);
     const update = Update<T>(tabelName);
     const all = All<T>(tabelName);

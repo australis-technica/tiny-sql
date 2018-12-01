@@ -3,7 +3,7 @@ import connectionConfig from "@australis/tiny-sql-connection-config";
 import simpleRepo from "./simple-repo";
 import { BasicTable } from "./types";
 /** */
-export default <T extends BasicTable>(tableName: string, setupScript: string, envKey?: string) => {
+export default <T extends BasicTable>(tableName: string, scripts: string|string[], envKey?: string) => {
 
     const {
         add,
@@ -16,7 +16,7 @@ export default <T extends BasicTable>(tableName: string, setupScript: string, en
         update,
         clear,
         drop
-    } = simpleRepo<T>(tableName, setupScript)
+    } = simpleRepo<T>(tableName, scripts)
 
     const connect = () => _connect(connectionConfig(envKey));
 
