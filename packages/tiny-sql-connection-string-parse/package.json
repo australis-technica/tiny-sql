@@ -9,7 +9,7 @@
     "test": "jest --ci --env=node",
     "build": "rimraf lib && tsc -p .",
     "publishit": "npm publish --access public",    
-    "packit": "yarn pack && mv *.tgz ../"
+    "packit": "yarn pack && mv *.tgz ../../install/"
   },
   "keywords": [],
   "author": "daniel@australis-technica.com",

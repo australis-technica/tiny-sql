@@ -9,14 +9,21 @@ const debug = debugModule(module);
  * @param tableName {string}
  * @param tableCreationScript {string} @description Must create default fields from BasicTable
  */
-export default (tableName: string, tableCreationScript: string) => () => async (
+export default (tableName: string, scripts: string | string[]) => () => async (
   connection: Connection,
 ): Promise<boolean> => {
   try {
+    if (Array.isArray(scripts)) {
+      for (const script of scripts) {
+        await Exec(script)(connection);
+      }
+      return;
+    }
     // ...
     if (!(await exists(tableName)(connection))) {
-      await Exec(tableCreationScript)(connection);
+      await Exec(scripts)(connection);
     }
+    // TODO: remove it
     return Exec<{ ok: number }>(
       `select ok=1 from sys.tables where name = '${tableName}'`,
     )(connection).then(x => x.values[0]["ok"] === 1);
