@@ -1,14 +1,15 @@
 {
   "name": "@australis/tiny-sql-exec-sql",
   "private": false,
-  "version": "1.0.0-21",
+  "version": "1.0.0-22",
   "description": "tiny sql mapper for tediousjs",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest --ci --env=node",
     "build": "rimraf lib && tsc -p .",
-    "publishit": "npm publish --access public"
+    "publishit": "npm publish --access public",
+    "packit": "yarn pack && mv *.tgz ../"
   },
   "keywords": [
     "typescript",
@@ -20,7 +21,7 @@
 
   "dependencies": {
     "@australis/create-debug": "^1.0.2",
-    "@australis/tiny-sql-params": "1.0.0-21",
+    "@australis/tiny-sql-params": "1.0.0-22",
     "tedious": "^3.0.1"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-connection-config",
-  "version": "1.0.0-21",
+  "version": "1.0.0-22",
   "description": "It provides ms-sql/tedious connection config from connection-string from env key.",
   "private": false,
   "main": "lib/index.js",
@@ -8,13 +8,14 @@
   "scripts": {
     "test": "jest --ci --env=node",
     "build": "rimraf lib && tsc -p .",
-    "publishit": "npm publish --access public"
+    "publishit": "npm publish --access public",
+    "packit": "yarn pack && mv *.tgz ../"
   },
   "keywords": [],
   "author": "daniel@australis-technica.com",
   "license": "MIT",
   "dependencies": {
-    "@australis/tiny-sql-connection-string-parse": "1.0.0-21"
+    "@australis/tiny-sql-connection-string-parse": "1.0.0-22"
   },
   "devDependencies": {
     "@types/tedious": "^2.6.1",

@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql",
-  "version": "1.0.0-21",
+  "version": "1.0.0-22",
   "description": "meta package",
   "private": false,
   "main": "lib/index.js",
@@ -13,11 +13,11 @@
   "author": "daniel@australis-technica.com",
   "license": "MIT",
   "dependencies": {
-    "@australis/tiny-sql-connect": "1.0.0-21",
-    "@australis/tiny-sql-connection-config": "1.0.0-21",
-    "@australis/tiny-sql-connection-string-parse": "1.0.0-21",    
-    "@australis/tiny-sql-exec-sql": "1.0.0-21",    
-    "@australis/tiny-sql-params": "1.0.0-21"  
+    "@australis/tiny-sql-connect": "1.0.0-22",
+    "@australis/tiny-sql-connection-config": "1.0.0-22",
+    "@australis/tiny-sql-connection-string-parse": "1.0.0-22",    
+    "@australis/tiny-sql-exec-sql": "1.0.0-22",    
+    "@australis/tiny-sql-params": "1.0.0-22"  
   },
   "devDependencies": {
     "@types/debug": "^0.0.31",

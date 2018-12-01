@@ -17,6 +17,6 @@
         "**/__test__/*"
     ],
     "include": [
-        "src", "../tiny-sql-connection-config/src/to-server.ts"
+        "src"
     ]
 }

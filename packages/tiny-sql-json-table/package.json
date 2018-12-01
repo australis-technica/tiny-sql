@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-json-table",
-  "version": "1.0.0-21",
+  "version": "1.0.0-22",
   "description": "sql json table",
   "private": false,
   "main": "lib/index.js",
@@ -8,16 +8,17 @@
   "scripts": {
     "test": "jest --env=node",
     "build": "rimraf lib && tsc -p .",
-    "publishit": "npm publish --access public"
+    "publishit": "npm publish --access public",
+    "packit": "yarn pack && mv *.tgz ../"
   },
   "keywords": [],
   "author": "daniel@australis-technica.com",
   "license": "MIT",
   "dependencies": {
     "@australis/create-debug": "^1.0.2",
-    "@australis/tiny-sql-exec-sql": "1.0.0-21",
-    "@australis/tiny-sql-connect": "1.0.0-21",
-    "@australis/tiny-sql-connection-config": "1.0.0-21"
+    "@australis/tiny-sql-exec-sql": "1.0.0-22",
+    "@australis/tiny-sql-connect": "1.0.0-22",
+    "@australis/tiny-sql-connection-config": "1.0.0-22"
   },
   "devDependencies": {
     "jest": "23.6.0",
