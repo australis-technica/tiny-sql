@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-extra",
-  "version": "1.0.0-22",
+  "version": "1.0.0-23",
   "description": "",
   "private": false,
   "main": "lib/index.js",

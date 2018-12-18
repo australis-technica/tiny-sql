@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql-simple-repo",
-  "version": "1.0.0-22",
+  "version": "1.0.0-23",
   "description": "Simple Table Repo",
   "private": false,
   "main": "lib/index.js",

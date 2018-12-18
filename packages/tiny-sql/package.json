@@ -1,6 +1,6 @@
 {
   "name": "@australis/tiny-sql",
-  "version": "1.0.0-22",
+  "version": "1.0.0-23",
   "description": "meta package",
   "private": false,
   "main": "lib/index.js",
