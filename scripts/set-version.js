@@ -4,13 +4,12 @@ const { existsSync } = require("fs");
 const { workspaces, version } = require("../package.json");
 const validVersion = require("./valid-version");
 const changeVersion = require("./change-version");
-const changeDependencyVersion = require("./change-dependency-version");
 const cwd = process.cwd();
 const projectVersion = version;
 const args = process.argv.slice(2);
 let quiet = args.find(a => /(--quiet|-v)/.test(a));
 quiet = typeof quiet === "string";
-log = !quiet ? console.log.bind(console) : () => { };
+log = !quiet ? console.log.bind(console) : () => {};
 /**
  * Start
  */
@@ -24,9 +23,6 @@ if (!validVersion(projectVersion)) {
   showUsage();
   process.exit(-1);
 }
-/**
- * Partial<Package> & { path: string }
- */
 const packages = workspaces.map(x => {
   const path = join(cwd, x, "package.json");
   const { name, version, dependencies } = require(path);
@@ -44,7 +40,7 @@ let changed = false;
 for (const workspace of packages) {
   if (workspace.version !== projectVersion) {
     changeVersion(workspace.path, projectVersion);
-    log("%s: version: %s -> %s", workspace.name, workspace.path, version);
+    log("set-version: %s => %s", workspace.path, version);
     changed = true;
   }
   if (workspace.dependencies) {
@@ -52,9 +48,12 @@ for (const workspace of packages) {
       if (dependencyName in workspace.dependencies) {
         //  Todo Change Dependecy Version
         if (workspace.dependencies[dependencyName] !== projectVersion) {
-          console.log('Workspace "%s" Dependency "%s" version: "%s" -> "%s"', workspace.name, dependencyName, workspace.dependencies[dependencyName], projectVersion);
-          changeDependencyVersion(workspace, dependencyName, projectVersion);
-          changed=true;
+          console.log(
+            '"%s" reference "%s":"%s"',
+            workspace.name,
+            dependencyName,
+            workspace.dependencies[dependencyName],
+          );
         }
       }
     }
